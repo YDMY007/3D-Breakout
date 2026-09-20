@@ -1,0 +1,27 @@
+# 打包产物
+dist/
+
+# 归档的旧资料和调试残留（保留在本地，不进版本库）
+archive/
+
+# fnpack 二进制（体积大，由开发者自行下载到 tools/bin/）
+tools/bin/
+
+# Python
+__pycache__/
+*.pyc
+
+# 系统
+.DS_Store
+Thumbs.db
+
+# 编辑器
+.vscode/
+.idea/
+*.swp
+
+# 与游戏无关的本地工具
+qoder-token.html
+
+# 内部部署分析报告（含个人网站架构细节，不公开）
+docs/website-deployment-feasibility.md

@@ -1,0 +1,795 @@
+<!DOCTYPE html>
+<html lang="zh-tw" class="use-system-fonts desktop chrome windows low" style="--scrollbar-width: 0px; --inner-height: 900px; --vp-height: 900px;">
+    <head>
+        <meta charset="utf-8">
+        <base href="./">
+        <script>/* 飞牛桌面小窗性能受限：iframe 内跳转轻量启动页（launcher.html），顶层标签页直接运行游戏 */
+try{if(window.self!==window.top){var _ok=false;try{_ok=!!sessionStorage.getItem("dzk-inwindow")}catch(e){_ok=false}if(!_ok)location.replace("launcher.html")}}catch(e){}</script>
+        <script>!function(e,a,l){var t=Array.prototype.slice.call(e.navigator&&navigator.languages||[]),n=(0===t.length&&navigator.language&&t.push(navigator.language),[["en","/","en-us"],["fr","/fr/","fr-fr"],["de","/de/","de-de"],["es","/es/","es-es"],["it","/it/","it-it"],["nl","/nl/","nl-nl"],["ja","/ja/","ja-jp"],["zh-tw","/zh-tw/","zh-tw-tw"]]);if(t.length&&n.length){var n=n.map(function(e){e={id:e[0],url:e[1],l:e[2].split("-")[0],full:e[2]};return"en"===e.id&&0,e}),e=document.cookie.match(/(^| )preferred_locale=([^;]+)/),e=e&&e[2],r=(e&&t.unshift(e),null),i=null;for(let e=0;e<t.length;e++){var o=t[e].toLowerCase(),s=o.split("-")[0];for(let e=0;e<n.length;e++){var u=n[e];if(o===u.full?r=u:s===u.l&&(i=u),r)break}if(r||i)break}var f,h=r||i;h&&((f=new Date).setTime(Date.now()+12096e5),a.cookie="preferred_locale="+h.id+";path=/;expires="+f+";samesite=lax"),!e&&h&&"zh-tw"!==h.id&&(a=h.url+l.search+l.hash,0)}}(window,document,location)</script>
+        <meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no,viewport-fit=cover">
+        <title>3D-Breakout By 彩奈</title>
+        <meta name="title" content="3D-Breakout By 彩奈">
+        <meta name="description" content="暢玩贏得 MAG Infinite S3 12th、MAG Codex X5 12th 或 MEG Trident X 12th &amp; Optix-MAG274QRF-QD 好禮！">
+        <meta name="HandheldFriendly" content="true">
+        <meta name="msapplication-tap-highlight" content="no">
+        <meta name="format-detection" content="telephone=no">
+        <meta name="application-name" content="3D-Breakout By 彩奈">
+        <meta name="mobile-web-app-capable" content="yes">
+        <meta name="theme-color" content="#000000">
+        <meta name="apple-mobile-web-app-title" content="3D-Breakout By 彩奈">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <meta name="pinterest" content="nohover">
+        <meta property="og:type" content="website">
+        <meta property="og:url" content="https://iwantitall.merci-michel.com/zh-tw">
+        <meta property="og:locale" content="zh_tw">
+        <meta property="og:title" content="3D-Breakout By 彩奈">
+        <meta property="og:description" content="暢玩贏得 MAG Infinite S3 12th、MAG Codex X5 12th 或 MEG Trident X 12th &amp; Optix-MAG274QRF-QD 好禮！">
+        <meta property="og:image" content="https://iwantitall.merci-michel.comshare/share_zh-tw.png?v=9756f7a2">
+        <meta property="og:image:width" content="1200">
+        <meta property="og:image:height" content="630">
+        <meta property="og:image:alt" content="MSI - I want it all Image">
+        <meta name="twitter:url" content="https://iwantitall.merci-michel.com/zh-tw">
+        <meta name="twitter:title" content="3D-Breakout By 彩奈">
+        <meta name="twitter:description" content="暢玩贏得 MAG Infinite S3 12th、MAG Codex X5 12th 或 MEG Trident X 12th &amp; Optix-MAG274QRF-QD 好禮！">
+        <meta name="twitter:card" content="summary_large_image">
+        <meta name="twitter:image" content="https://iwantitall.merci-michel.comshare/share_zh-tw.png?v=9756f7a2">
+        <meta name="google" content="notranslate">
+        <link rel="icon" href="./favicon.ico" sizes="any">
+        <link rel="icon" href="./icons/favicon_dark.svg" type="image/svg+xml" media="(prefers-color-scheme: dark)">
+        <link rel="icon" href="./icons/favicon_light.svg" type="image/svg+xml" media="(prefers-color-scheme: light)">
+        <link rel="apple-touch-icon" href="./icons/icon_180.png">
+        <meta name="robots" content="index,follow">
+        <meta name="googlebot" content="index,follow">
+        <link rel="modulepreload" href="./assets/main.fb1695dd11ae33ec_v10.js" as="script">
+        <link rel="modulepreload" href="./assets/webgl.c47c235111ae33ec_v10.js" as="script">
+        <link href="./assets/vendor.605820b411ae33ec.css" rel="stylesheet">
+        <style>svg.icons-spritesheet symbol:not(.raw) * {
+fill: inherit;
+stroke: inherit;
+}</style>
+        <style>html{-webkit-tap-highlight-color:rgba(255,255,255,0);-webkit-touch-callout:none;font-size:10px;line-height:1.5}html,body,div,span,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td,article,aside,canvas,details,embed,figure,figcaption,footer,header,hgroup,menu,nav,output,ruby,section,summary,time,mark,audio,video{margin:0;padding:0;border:0;font-size:100%;font:inherit;vertical-align:baseline;box-sizing:border-box;font-weight:inherit;touch-action:manipulation}body{display:block}*,*:before,*:after{box-sizing:border-box}ul,ol{list-style:none}article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section{display:block}img,video,svg{max-width:100%;display:block}body{-webkit-text-size-adjust:100%}a{color:inherit;text-decoration:inherit;touch-action:pan-y}button *,a *{pointer-events:none}button,input,textarea,select{margin:0;padding:0;color:inherit;background:inherit;font:inherit;line-height:inherit;letter-spacing:inherit;text-transform:inherit;outline:none}button{cursor:pointer;-webkit-appearance:none;-moz-appearance:none;appearance:none;border:none;touch-action:pan-y}textarea{overflow:auto;vertical-align:top;resize:vertical}:root{--base-text: calc((22px) * var(--h-demult, 1));--padding: calc(var(--base-text));--font-popin: "Exo", Arial, Helvetica, sans-serif;--font-title: "Exo2", Arial, Helvetica, sans-serif;--font-text: "DINPro", Arial, Helvetica, sans-serif;--font-numbers: "Roboto", Arial, Helvetica, sans-serif;--font-system: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif}html.use-system-fonts{--font-popin: var(--font-system);--font-title: var(--font-system);--font-text: var(--font-system)}@font-face{font-family:DINPro;font-style:normal;font-weight:400;src:url(./assets/dinpro-regular.0de53b8211ae33ec.woff2) format("woff2"),url(./assets/dinpro-regular.d7c2045011ae33ec.woff) format("woff");font-display:"block"}@font-face{font-family:DINPro;font-style:normal;font-weight:700;src:url(./assets/dinpro-bold.3677f18411ae33ec.woff2) format("woff2"),url(./assets/dinpro-bold.cd9495d111ae33ec.woff) format("woff");font-display:"block"}@font-face{font-family:Exo2;font-style:normal;font-weight:100;src:url(./assets/exo2-thin.74b24fc411ae33ec.woff2) format("woff2"),url(./assets/exo2-thin.6bf9c2b811ae33ec.woff) format("woff");font-display:"block"}@font-face{font-family:Exo2;font-style:normal;font-weight:300;src:url(./assets/exo2-light.6f008a1011ae33ec.woff2) format("woff2"),url(./assets/exo2-light.3d50c11d11ae33ec.woff) format("woff");font-display:"block"}@font-face{font-family:Exo2;font-style:normal;font-weight:400;src:url(./assets/exo2-regular.4fef682411ae33ec.woff2) format("woff2"),url(./assets/exo2-regular.aad68efc11ae33ec.woff) format("woff");font-display:"block"}@font-face{font-family:Exo2;font-style:normal;font-weight:700;src:url(./assets/exo2-bold.4f55130411ae33ec.woff2) format("woff2"),url(./assets/exo2-bold.afe89b2e11ae33ec.woff) format("woff");font-display:"block"}@font-face{font-family:Exo;font-style:normal;font-weight:400;src:url(./assets/exo-regular.62db7afa11ae33ec.woff2) format("woff2"),url(./assets/exo-regular.bda386b011ae33ec.woff) format("woff");font-display:"block"}@font-face{font-family:Roboto;font-style:normal;font-weight:700;src:url(./assets/RobotoMono-Bold.bbd256c211ae33ec.woff2) format("woff2"),url(./assets/RobotoMono-Bold.359bd09511ae33ec.woff) format("woff");font-display:"block"}.page.page-register,.page.page-results{display:flex;align-items:center;justify-content:center;padding:0}.popin .popin__results-text{display:flex;flex-direction:column;flex-grow:1;align-items:center;justify-content:center;padding-left:40px}.popin .popin__results-text h1{font-family:var(--font-text)!important;text-align:left}.popin .popin__results-text h1 strong{font-weight:700!important}.popin .popin__results-text .results-message{margin-top:13px;margin-bottom:-5px;text-align:left}.page.page-results .popin__header,.register-step--confirmation .popin__header,.page.page-results .popin__header .popin__results-text,.register-step--email .popin__header .popin__results-text,.register-step--confirmation .popin__header .popin__results-text{align-items:flex-start}.page.page-results .popin__header .popin__score,.register-step--email .popin__header .popin__score,.register-step--confirmation .popin__header .popin__score{margin-left:0}.page.page-register .popin__content{background:#fff}.page.page-register .popin__content:after{display:none}html[data-page=register] .webgl-wrapper,html[data-page=results] .webgl-wrapper{position:absolute}.popin{position:relative;display:flex;flex-direction:column;align-items:center;justify-content:center;width:700px;max-width:100%;overflow:hidden;background:rgba(0,0,0,.7);border:1px solid rgba(255,255,255,.25);--title: calc((20px) * var(--h-demult, 1))}.popin strong{font-weight:700}.popin h1{max-width:320px;font-family:var(--font-title);font-size:var(--title);font-weight:400;line-height:1.12em;color:#fff;text-align:center;text-transform:uppercase;letter-spacing:.06em}.popin h1 strong{font-weight:400}.popin select,.popin input{width:100%;padding:20px 30px;font-family:var(--font-text);font-size:16px;color:#2c2c2c;border:1px solid #d0d0d0;border-radius:100px;transition:border .25s;-webkit-appearance:none;-moz-appearance:none;appearance:none}.popin select:focus::-moz-placeholder,.popin input:focus::-moz-placeholder{opacity:.25}.popin select:focus:-ms-input-placeholder,.popin input:focus:-ms-input-placeholder{opacity:.25}.popin select:focus::placeholder,.popin input:focus::placeholder{opacity:.25}.popin select::-moz-placeholder,.popin input::-moz-placeholder{color:#9b9b9b}.popin select:-ms-input-placeholder,.popin input:-ms-input-placeholder{color:#9b9b9b}.popin select option,.popin select::placeholder,.popin input option,.popin input::placeholder{color:#9b9b9b}.popin select{width:100%}.popin .select{position:relative}.popin .select:before{position:absolute;top:5px;right:30px;bottom:0;display:flex;align-items:center;justify-content:center;width:15px;height:15px;margin:auto;font-size:18px;color:#9b9b9b;content:"\25b2";transform:rotate(180deg) scaleY(.7)}.popin:before,.popin:after{position:absolute;top:0;left:0;width:100%;height:100%;pointer-events:none;background:rgba(255,255,255,.75);border:1px solid #fff;border-radius:15px;transition:transform 1.2s cubic-bezier(0,.96,.22,1),border 1.2s cubic-bezier(0,.96,.22,1),opacity 1.2s cubic-bezier(0,.96,.22,1)}.popin:before{border:1px solid #b602d7;transform:scale(1.2)}.popin:after{border:1px solid #593aff;transform:scale(1.4)}.popin .select,.popin .form-input,.popin .form-checkbox,.popin .button{position:relative;transition:color .15s,background .15s,transform 1s cubic-bezier(0,.96,.22,1),border 1s cubic-bezier(0,.96,.22,1),opacity 1s cubic-bezier(0,.96,.22,1)}.popin--visible:before,.popin--visible:after{border:1px solid #fff;opacity:0;transform:scale(1)}.popin .disabled button{color:#d0d0d0;pointer-events:none;border:1px solid #d0d0d0}.popin .disabled button:after{opacity:0}.popin__score{display:flex;flex-direction:column;align-items:center;justify-content:center;font-family:var(--font-popin);color:#f12e88;text-shadow:0 0 6px rgba(255,255,255,.5);--score-size: calc((63px) * var(--h-demult, 1))}.popin__score span{background:linear-gradient(88deg,#fe0291 -6%,#b762ff 29%,#5143ff 55%,#005cff 79%,#8fd7ff 104%);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}.popin__score .score-units{font-size:.75rem;text-transform:uppercase}.popin__score .score-value{font-size:var(--score-size);line-height:1.3}.popin__header,.popin__content{position:relative;display:flex;flex-direction:column;align-items:center;justify-content:center;width:100%}.popin__header{position:relative;padding:60px 0;color:#fff}.page-results .popin__header{justify-content:flex-end;padding:50px 0 0;overflow:hidden}.popin__shape{position:absolute;bottom:-15px;width:100%;height:45px;overflow:hidden}.popin__shape:before{position:absolute;right:0;width:110%;height:100%;content:"";background:#fff;transform:translateY(2px) rotate(-2deg);transform-origin:top right}.popin__content{display:flex;flex-direction:column;align-items:center;justify-content:center;color:#2c2c2c;min-inline-size:0}.popin__content:after{position:absolute;bottom:0;z-index:0;width:100%;height:50%;content:"";background:white}.page-register .popin__content{padding:35px 50px 50px}.page-register .popin__content>*:not(:last-child){margin-bottom:20px}.popin__content .select+.form-checkbox{margin:10px}.popin__content p{max-width:80%;text-align:center}.popin__buttons{z-index:1;display:flex}.page-results .popin__buttons{padding:10px;margin-top:0}.popin__buttons .button{cursor:pointer}.popin__buttons .button span{pointer-events:none}.popin__buttons .button a{position:relative;z-index:1}.popin__buttons .button:not(:last-child){margin-right:10px}.popin-enter-active,.popin-leave-active{will-change:transform;transition:opacity .5s cubic-bezier(.55,0,.1,1),transform .5s cubic-bezier(.55,0,.1,1)}.popin-enter-from{opacity:0;transform:scale(1.1)}.popin-leave-to{opacity:0;transform:scale(.9)}@-webkit-keyframes blinkOpacityIn{0%{opacity:.1}1%{opacity:1}4%{opacity:1}8%{opacity:.1}12%{opacity:1}15%{opacity:.1}18%{opacity:1}21%{opacity:.1}23%{opacity:1}31%{opacity:1}to{opacity:1}}@keyframes blinkOpacityIn{0%{opacity:.1}1%{opacity:1}4%{opacity:1}8%{opacity:.1}12%{opacity:1}15%{opacity:.1}18%{opacity:1}21%{opacity:.1}23%{opacity:1}31%{opacity:1}to{opacity:1}}@-webkit-keyframes blinkIn2{0%{opacity:1;transform:scale(.6) skew(800deg)}2%{opacity:1;transform:scale(1.2) skew(60deg)}4%{opacity:0;transform:skew(0)}10%{opacity:1}13%{opacity:.4;transform:skew(40deg)}15%{opacity:.4;transform:skew(0)}17%{opacity:1;transform:skew(0)}20%{opacity:.5;transform:scale(1) skew(4deg)}21%{opacity:.5;transform:skew(0)}25%{opacity:1;transform:skew(0)}29%{opacity:1;transform:skew(0)}30%{opacity:.8;transform:skew(0)}32%{opacity:1;transform:skew(0)}85%{opacity:1;transform:skew(0)}}@keyframes blinkIn2{0%{opacity:1;transform:scale(.6) skew(800deg)}2%{opacity:1;transform:scale(1.2) skew(60deg)}4%{opacity:0;transform:skew(0)}10%{opacity:1}13%{opacity:.4;transform:skew(40deg)}15%{opacity:.4;transform:skew(0)}17%{opacity:1;transform:skew(0)}20%{opacity:.5;transform:scale(1) skew(4deg)}21%{opacity:.5;transform:skew(0)}25%{opacity:1;transform:skew(0)}29%{opacity:1;transform:skew(0)}30%{opacity:.8;transform:skew(0)}32%{opacity:1;transform:skew(0)}85%{opacity:1;transform:skew(0)}}@-webkit-keyframes blinkIn{0%{opacity:1;transform:scale(.6) skew(400deg)}2%{opacity:1;transform:scale(1.2) skew(40deg)}4%{opacity:0;transform:skew(0)}10%{opacity:1}13%{opacity:.4;transform:skew(20deg)}15%{opacity:.4;transform:skew(0)}17%{opacity:1;transform:skew(0)}20%{opacity:.5;transform:scale(1) skew(2deg)}21%{opacity:.5;transform:skew(0)}25%{opacity:1;transform:skew(0)}29%{opacity:1;transform:skew(0)}30%{opacity:.8;transform:skew(0)}32%{opacity:1;transform:skew(0)}85%{opacity:1;transform:skew(0)}}@keyframes blinkIn{0%{opacity:1;transform:scale(.6) skew(400deg)}2%{opacity:1;transform:scale(1.2) skew(40deg)}4%{opacity:0;transform:skew(0)}10%{opacity:1}13%{opacity:.4;transform:skew(20deg)}15%{opacity:.4;transform:skew(0)}17%{opacity:1;transform:skew(0)}20%{opacity:.5;transform:scale(1) skew(2deg)}21%{opacity:.5;transform:skew(0)}25%{opacity:1;transform:skew(0)}29%{opacity:1;transform:skew(0)}30%{opacity:.8;transform:skew(0)}32%{opacity:1;transform:skew(0)}85%{opacity:1;transform:skew(0)}}.splide{width:100%;cursor:-webkit-grab;cursor:grab}.splide:active{cursor:-webkit-grabbing;cursor:grabbing}.splide button{outline:none!important}.splide .splide__arrow--next{right:0}.splide .splide__arrow--prev{left:0}.splide .splide__pagination{bottom:0}.splide .splide__arrow{width:20px;height:20px;background:none;transition:opacity .6s cubic-bezier(.55,0,.1,1)}.splide .splide__arrow svg{fill:#fff}.splide .splide__slide{transition:opacity 1s}.splide .splide__track{padding-bottom:60px;-webkit-mask-image:linear-gradient(90deg,transparent 0%,black 30%,black 70%,transparent 100%);mask-image:linear-gradient(90deg,transparent 0%,black 30%,black 70%,transparent 100%)}.splide .splide__pagination li .is-active{background:#fff}.splide .splide__pagination__page{width:15px;height:5px;margin:5px;border-radius:3px}.splide .splide__pagination__page.is-active{opacity:1}.splide__container{box-sizing:border-box;position:relative}.splide__list{-webkit-backface-visibility:hidden;backface-visibility:hidden;display:flex;height:100%;margin:0!important;padding:0!important}.splide.is-initialized:not(.is-active) .splide__list{display:block}.splide__pagination{align-items:center;display:flex;flex-wrap:wrap;justify-content:center;margin:0;pointer-events:none}.splide__pagination li{display:inline-block;line-height:1;list-style-type:none;margin:0;pointer-events:auto}.splide__progress__bar{width:0}.splide{position:relative;visibility:hidden}.splide.is-initialized,.splide.is-rendered{visibility:visible}.splide__slide{-webkit-backface-visibility:hidden;backface-visibility:hidden;box-sizing:border-box;flex-shrink:0;list-style-type:none!important;margin:0;position:relative}.splide__slide img{vertical-align:bottom}.splide__spinner{-webkit-animation:splide-loading 1s linear infinite;animation:splide-loading 1s linear infinite;border:2px solid #999;border-left-color:transparent;border-radius:50%;bottom:0;contain:strict;display:inline-block;height:20px;left:0;margin:auto;position:absolute;right:0;top:0;width:20px}.splide__sr{clip:rect(0 0 0 0);border:0;height:1px;margin:-1px;overflow:hidden;padding:0;position:absolute;width:1px}.splide__toggle.is-active .splide__toggle__play,.splide__toggle__pause{display:none}.splide__toggle.is-active .splide__toggle__pause{display:inline}.splide__track{overflow:hidden;position:relative;z-index:0}@-webkit-keyframes splide-loading{0%{transform:rotate(0)}to{transform:rotate(1turn)}}@keyframes splide-loading{0%{transform:rotate(0)}to{transform:rotate(1turn)}}.splide__track--draggable{-webkit-touch-callout:none;-webkit-user-select:none;-ms-user-select:none;-moz-user-select:none;user-select:none}.splide__track--fade>.splide__list{display:block}.splide__track--fade>.splide__list>.splide__slide{left:0;opacity:0;position:absolute;top:0;z-index:0}.splide__track--fade>.splide__list>.splide__slide.is-active{opacity:1;position:relative;z-index:1}.splide--rtl{direction:rtl}.splide__track--ttb>.splide__list{display:block}.splide__arrow{align-items:center;background:#ccc;border:0;border-radius:50%;cursor:pointer;display:flex;height:2em;justify-content:center;opacity:.7;padding:0;position:absolute;top:50%;transform:translateY(-50%);width:2em;z-index:1}.splide__arrow svg{fill:#000;height:1.2em;width:1.2em}.splide__arrow:hover:not(:disabled){opacity:.9}.splide__arrow:disabled{opacity:.3}.splide__arrow:focus-visible{outline:3px solid #0bf;outline-offset:3px}.splide__arrow--prev{left:1em}.splide__arrow--prev svg{transform:scaleX(-1)}.splide__arrow--next{right:1em}.splide.is-focus-in .splide__arrow:focus{outline:3px solid #0bf;outline-offset:3px}.splide__pagination{bottom:.5em;left:0;padding:0 1em;position:absolute;right:0;z-index:1}.splide__pagination__page{background:#ccc;border:0;border-radius:50%;display:inline-block;height:8px;margin:3px;opacity:.7;padding:0;position:relative;transition:transform .2s linear;width:8px}.splide__pagination__page.is-active{background:#fff;transform:scale(1.4);z-index:1}.splide__pagination__page:hover{cursor:pointer;opacity:.9}.splide__pagination__page:focus-visible{outline:3px solid #0bf;outline-offset:3px}.splide.is-focus-in .splide__pagination__page:focus{outline:3px solid #0bf;outline-offset:3px}.splide__progress__bar{background:#ccc;height:3px}.splide__slide{-webkit-tap-highlight-color:transparent}.splide__slide:focus{outline:0}@supports (outline-offset: -3px){.splide__slide:focus-visible{outline:3px solid #0bf;outline-offset:-3px}}@supports (outline-offset: -3px){.splide.is-focus-in .splide__slide:focus{outline:3px solid #0bf;outline-offset:-3px}}.splide__toggle{cursor:pointer}.splide__toggle:focus-visible{outline:3px solid #0bf;outline-offset:3px}.splide.is-focus-in .splide__toggle:focus{outline:3px solid #0bf;outline-offset:3px}.splide__track--nav>.splide__list>.splide__slide{border:3px solid transparent;cursor:pointer}.splide__track--nav>.splide__list>.splide__slide.is-active{border:3px solid #000}.splide__arrows--rtl .splide__arrow--prev{left:auto;right:1em}.splide__arrows--rtl .splide__arrow--prev svg{transform:scaleX(1)}.splide__arrows--rtl .splide__arrow--next{left:1em;right:auto}.splide__arrows--rtl .splide__arrow--next svg{transform:scaleX(-1)}.splide__arrows--ttb .splide__arrow{left:50%;transform:translate(-50%)}.splide__arrows--ttb .splide__arrow--prev{top:1em}.splide__arrows--ttb .splide__arrow--prev svg{transform:rotate(-90deg)}.splide__arrows--ttb .splide__arrow--next{bottom:1em;top:auto}.splide__arrows--ttb .splide__arrow--next svg{transform:rotate(90deg)}.splide__pagination--ttb{bottom:0;display:flex;flex-direction:column;left:auto;padding:1em 0;right:.5em;top:0}html{font-family:sans-serif;font-size:var(--base-text);font-weight:100;color:#fff;background:#000}::-moz-selection{color:#fff;background:rgba(0,0,0,.7)}::selection{color:#fff;background:rgba(0,0,0,.7)}.old-browser{position:relative;z-index:1;width:100vw;height:100vh;font-family:var(--font-text);text-align:center;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}.old-browser .container{position:absolute;top:50%;left:50%;width:100%;transform:translate(-50%,-50%)}.old-browser .container h1{font-family:var(--font-title);font-size:7vw;line-height:1;color:#0ff;text-shadow:0 1px 0 rgba(0,0,0,.2);text-transform:uppercase}.old-browser .container p{width:70vw;max-width:470px;margin:1em auto;font-size:20px;color:#fff;text-shadow:0 1px 0 rgba(0,0,0,.2)}.old-browser__background{position:absolute;top:0;left:0;z-index:0;width:100%;height:100%;background-image:url(/oldBrowser/oldBrowser.jpg);background-repeat:no-repeat;background-position:center center;background-size:cover}*{scrollbar-width:auto;scrollbar-color:#513dcd #fff}*::-webkit-scrollbar{width:16px}*::-webkit-scrollbar-track{background:#fff}*::-webkit-scrollbar-thumb{background-color:#513dcd;border:3px solid #fff;border-radius:10px}@media (min-width: 375px) and (max-width: 768px){:root{--base-text: calc((8.1424936387vw - 8.534351145px) * var(--h-demult, 1))}}@media (min-width: 400px) and (max-width: 700px){.popin{--title: calc((1.3333333333vw + 14.6666666667px) * var(--h-demult, 1))}.popin__score{--score-size: calc((5.6666666667vw + 40.3333333333px) * var(--h-demult, 1))}}@media (min-width: 701px){.popin__score{--score-size: calc((80px) * var(--h-demult, 1))}}@media (min-width: 768px) and (max-width: 1440px){:root{--base-text: calc((2.0833333333vw + 38px) * var(--h-demult, 1))}}@media (min-width: 1440px) and (max-width: 1900px){:root{--base-text: calc((2.6086956522vw + 30.4347826087px) * var(--h-demult, 1))}}@media (min-width: 1901px){:root{--base-text: calc((80px) * var(--h-demult, 1))}}@media (min-width: 1921px){.popin{--title: calc((24px) * var(--h-demult, 1))}}@media (max-width: 767px){.splide .splide__arrow{width:40px;height:40px}.splide .splide__track{padding-bottom:40px}.old-browser .container h1{font-size:15vw}.old-browser .container p{max-width:90vw;font-size:4.5vw}}@media (max-width: 699px){.page.page-register,.page.page-results{position:relative;display:block;min-height:100%;overflow:hidden}.popin .popin__results-text{padding-left:20px}.popin{top:0;left:0;min-height:var(--inner-height);background:rgba(0,0,0,.5)}.popin.register-step--details{position:relative}.popin{justify-content:flex-start;border:none;border-radius:0}.popin__header,.popin__content{min-width:50%}.popin__header{flex-grow:1}.register-step--details .popin__header{padding-top:125px}.register-step--done .popin__header{z-index:1}.popin__content{overflow:initial}.page-register .popin__content{padding:15px 25px 25px}.page-register .popin__content>*:not(:last-child){margin-bottom:15px}.popin__content p{max-width:initial}.popin__content{border-radius:0}.register-step--details .popin__content{padding-bottom:50px}.popin-enter-active,.popin-leave-active{transition:opacity .6s cubic-bezier(.55,0,.1,1),transform .7s cubic-bezier(.55,0,.1,1)}.popin-leave-to{opacity:0;transform:scale(1)}}@media (hover: hover){.popin select:hover,.popin input:hover{border:1px solid #9b9b9b}*::-webkit-scrollbar-thumb:hover{background-color:#8256d5}}@media (hover: none) and (pointer: coarse){.popin select:active,.popin input:active{border:1px solid #9b9b9b}*::-webkit-scrollbar-thumb:active{background-color:#8256d5}}@media screen and (-ms-high-contrast: none){.splide__slide:focus-visible{border:3px solid #0bf}.splide.is-focus-in .splide__slide:focus{border:3px solid #0bf}.splide.is-focus-in .splide__track>.splide__list>.splide__slide:focus{border-color:#0bf}}.logo-wrapper{--logo-size: calc((60px) * var(--h-demult, 1));width:var(--logo-size)}.icon{fill:#fff;transition:fill .5s}.icon.invert{fill:#000;transition:fill .5s}@media (min-width: 768px) and (max-width: 1200px){.logo-wrapper{--logo-size: calc((6.9444444444vw + 6.6666666667px) * var(--h-demult, 1))}}@media (min-width: 1201px){.logo-wrapper{--logo-size: calc((90px) * var(--h-demult, 1))}}.menu-button[data-v-67bbf066]{position:relative;display:flex;flex-direction:column;align-items:center;justify-content:center;width:var(--menu-button-size);height:var(--menu-button-size);pointer-events:none;opacity:0;transition:.3s cubic-bezier(.55,0,.1,1);--menu-button-size: calc((40px) * var(--h-demult, 1))}.menu-button.visible[data-v-67bbf066]{pointer-events:all;opacity:1}.back .menu-button[data-v-67bbf066]{pointer-events:none;opacity:0}.menu-button.sm[data-v-67bbf066]{width:calc(var(--menu-button-size) * .68);height:calc(var(--menu-button-size) * .68)}.menu-button .button-content[data-v-67bbf066]{position:relative;display:flex;flex-direction:column;align-items:center;justify-content:center;width:100%;height:100%}.menu-button .button-content.invert .state div[data-v-67bbf066]{background:#000;transition:opacity .15s cubic-bezier(.55,0,.1,1),background .5s cubic-bezier(.55,0,.1,1)}.menu-button .state[data-v-67bbf066]{position:absolute;display:flex;flex-direction:column;align-items:center;justify-content:space-between;width:17px;height:17px;opacity:0;transition:opacity .3s cubic-bezier(.55,0,.1,1),transform .3s cubic-bezier(.55,0,.1,1);transform:rotate(180deg)}.menu-button .state.inGame[data-v-67bbf066]{height:50%}.menu-button .state.active[data-v-67bbf066]{opacity:1}.menu-button .state.isOpen[data-v-67bbf066]{transform:rotate(0)}.menu-button .state div[data-v-67bbf066]{background-color:#fff;border-radius:5px;transition:transform .3s cubic-bezier(.55,0,.1,1),opacity .15s cubic-bezier(.55,0,.1,1),background .5s cubic-bezier(.55,0,.1,1)}.menu-button .open div[data-v-67bbf066]{position:relative;width:100%;height:3px}.menu-button .open.inGame div[data-v-67bbf066]{position:absolute;top:50%;left:50%;width:90%;height:3px;opacity:1}.menu-button .open.inGame div[data-v-67bbf066]:nth-child(1){transform:translate(-25%,-50%) rotate(90deg)}.menu-button .open.inGame div[data-v-67bbf066]:nth-child(2){opacity:0;transform:translate(100%,-50%)}.menu-button .open.inGame div[data-v-67bbf066]:nth-child(3){transform:translate(-75%,-50%) rotate(90deg)}.menu-button .close div[data-v-67bbf066]{position:absolute;top:50%;left:50%;width:100%;height:3px;opacity:1}.menu-button .close div[data-v-67bbf066]:nth-child(1){transform:translate(-50%,-50%) rotate(45deg)}.menu-button .close div[data-v-67bbf066]:nth-child(2){transform:translate(-50%,-50%) rotate(-45deg)}.menu-button .pause div[data-v-67bbf066]{position:absolute;top:50%;left:50%;width:100%;height:3px;opacity:1}.menu-button .pause div[data-v-67bbf066]:nth-child(1){transform:translate(-25%,-50%) rotate(90deg)}.menu-button .pause div[data-v-67bbf066]:nth-child(2){transform:translate(-75%,-50%) rotate(90deg)}.menu-button:focus-visible .button-content .state.active[data-v-67bbf066]{opacity:.7}@media (min-width: 1200px) and (max-width: 1920px){.menu-button[data-v-67bbf066]{--menu-button-size: calc((1.3888888889vw + 23.3333333333px) * var(--h-demult, 1))}}@media (min-width: 1921px){.menu-button[data-v-67bbf066]{--menu-button-size: calc((50px) * var(--h-demult, 1))}}@media (hover: hover){.menu-button:hover .button-content .state.active[data-v-67bbf066]{opacity:.7}}@media (hover: none) and (pointer: coarse){.menu-button:active .button-content .state.active[data-v-67bbf066]{opacity:.7}}.sound-button[data-v-2645cb68]{--sound-button-size: calc((40px) * var(--h-demult, 1));position:relative;display:flex;flex-direction:column;align-items:center;justify-content:center;width:var(--sound-button-size);height:var(--sound-button-size);transition:opacity .3s cubic-bezier(.55,0,.1,1)}.sound-button.sm[data-v-2645cb68]{width:calc(var(--sound-button-size) * .68);height:calc(var(--sound-button-size) * .68)}.sound-button .button-content[data-v-2645cb68]{position:relative;display:flex;flex-direction:column;align-items:center;justify-content:center;width:100%;height:100%;opacity:.7;transition:opacity .3s cubic-bezier(.55,0,.1,1),transform .3s cubic-bezier(.55,0,.1,1)}.sound-button .button-content.active[data-v-2645cb68]{opacity:1}.sound-button .button-canvas[data-v-2645cb68]{position:absolute;bottom:0;left:0;width:100%;height:100%}.sound-button:focus-visible .button-content[data-v-2645cb68]{opacity:1;transition:opacity .3s cubic-bezier(.55,0,.1,1)}@media (min-width: 1200px) and (max-width: 1920px){.sound-button[data-v-2645cb68]{--sound-button-size: calc((1.3888888889vw + 23.3333333333px) * var(--h-demult, 1))}}@media (min-width: 1921px){.sound-button[data-v-2645cb68]{--sound-button-size: calc((50px) * var(--h-demult, 1))}}@media (hover: hover){.sound-button:hover .button-content[data-v-2645cb68]{opacity:1;transition:opacity .3s cubic-bezier(.55,0,.1,1)}}@media (hover: none) and (pointer: coarse){.sound-button:active .button-content[data-v-2645cb68]{opacity:1;transition:opacity .3s cubic-bezier(.55,0,.1,1)}}.app-header[data-v-593a0a07]{--padding: calc((15px) * var(--h-demult, 1));position:fixed;z-index:5;display:flex;align-items:center;justify-content:space-between;width:100vw;padding:var(--padding) calc(var(--padding) * 1.5) var(--padding);pointer-events:none}.app-header[data-v-593a0a07]:before{position:absolute;top:0;left:0;z-index:-1;width:100%;height:100%;content:"";background:#fff;box-shadow:0 5px 20px #0000001a;transition:transform .8s cubic-bezier(.55,0,.1,1);transform:translateY(-110%)}body.white-header .app-header[data-v-593a0a07]:before{transform:translateY(0)}.app-header:before body.menuOpened[data-v-593a0a07]{transform:translateY(-110%)!important}html.screenshot-mode .app-header[data-v-593a0a07]{opacity:0!important}.logo[data-v-593a0a07]{--logo-size: calc((80px) * var(--h-demult, 1));width:var(--logo-size);pointer-events:all;cursor:pointer;outline:0;transition:transform .8s cubic-bezier(.55,0,.1,1),opacity .5s cubic-bezier(.55,0,.1,1)}.logo.visible[data-v-593a0a07]{transform:translateY(0)}.buttons[data-v-593a0a07]{--buttons-width: calc((100px) * var(--h-demult, 1));display:flex;flex-direction:row;align-items:center;justify-content:flex-end;width:var(--buttons-width)}.buttons .sound-button[data-v-593a0a07]{margin-right:25px;opacity:0;transition:opacity .7s cubic-bezier(.55,0,.1,1)}.buttons .sound-button.visible[data-v-593a0a07]{pointer-events:all;opacity:1}.back .buttons .sound-button[data-v-593a0a07]{pointer-events:none;opacity:0}.close__center[data-v-593a0a07]{position:absolute;top:0;left:50%;display:flex;height:100%;pointer-events:none;transition:transform 1s cubic-bezier(.55,0,.1,1),opacity .4s cubic-bezier(.55,0,.1,1);transform:translate(-50%,-120%)}.close__center button[data-v-593a0a07]{--padding: calc((8px) * var(--h-demult, 1));padding:0 calc(var(--padding) * 2)}.back .close__center[data-v-593a0a07]{pointer-events:all;transform:translate(-50%)}@media (min-width: 768px) and (max-width: 1200px){.app-header[data-v-593a0a07]{--padding: calc((3.4722222222vw - 11.6666666667px) * var(--h-demult, 1))}.logo[data-v-593a0a07]{--logo-size: calc((5.787037037vw + 35.5555555556px) * var(--h-demult, 1))}.close__center button[data-v-593a0a07]{--padding: calc((1.6203703704vw - 4.4444444444px) * var(--h-demult, 1))}}@media (min-width: 1200px) and (max-width: 1600px){.buttons[data-v-593a0a07]{--buttons-width: calc((8.75vw - 5px) * var(--h-demult, 1))}}@media (min-width: 1201px){.app-header[data-v-593a0a07]{--padding: calc((30px) * var(--h-demult, 1))}.logo[data-v-593a0a07]{--logo-size: calc((105px) * var(--h-demult, 1))}.close__center button[data-v-593a0a07]{--padding: calc((15px) * var(--h-demult, 1))}}@media (min-width: 1601px){.buttons[data-v-593a0a07]{--buttons-width: calc((135px) * var(--h-demult, 1))}}@media (max-width: 767px){.logo[data-v-593a0a07]{transform:translateY(-300%)}.buttons .sound-button[data-v-593a0a07]{pointer-events:none;opacity:0!important}body.menuOpened .buttons .sound-button[data-v-593a0a07]{pointer-events:all;opacity:1!important}}@media (hover: hover){.logo[data-v-593a0a07]:hover{opacity:.7}.back .close__center[data-v-593a0a07]:hover{opacity:.5}}@media (hover: none) and (pointer: coarse){.logo[data-v-593a0a07]:active{opacity:.7}.back .close__center[data-v-593a0a07]:active{opacity:.5}}.menu[data-v-f5bee8ee]{--width: calc((400px) * var(--h-demult, 1));position:fixed;right:0;z-index:4;display:flex;flex-direction:column;align-items:flex-end;justify-content:space-between;width:100vw;height:100%;pointer-events:none}.menu .cta-button span[data-v-f5bee8ee]{pointer-events:none}.menu[data-v-f5bee8ee] .language-picker-select{color:#000!important;color:initial!important}.menu.visible .background[data-v-f5bee8ee],.menu.visible .content[data-v-f5bee8ee]{pointer-events:all}html.screenshot-mode .menu[data-v-f5bee8ee]{opacity:0!important}.menu .background[data-v-f5bee8ee]{--width: calc((400px) * var(--h-demult, 1));position:absolute;top:0;right:0;z-index:-1;width:var(--width);height:100%;pointer-events:none;background-color:#fff;background-image:linear-gradient(220deg,rgba(254,2,145,.95) -40%,rgba(183,98,255,.95) 28%,rgba(81,67,255,.95) 75%,rgba(0,92,255,.95) 120%,rgba(143,215,255,.95) 165%);box-shadow:0 -10px 40px #5143ff00;transition:box-shadow .5s cubic-bezier(.55,0,.1,1)}.menu .background.visible[data-v-f5bee8ee]{box-shadow:0 -10px 40px #5143ffd9;transition:box-shadow .5s cubic-bezier(.55,0,.1,1)}.content[data-v-f5bee8ee]{--width: calc((400px) * var(--h-demult, 1));position:relative;right:0;display:flex;flex-direction:column;align-items:center;justify-content:space-between;width:var(--width);height:70%;max-height:400px;padding:var(--padding) calc(var(--padding) * 2) 0;margin:auto 0;color:#fff;--padding: calc((20px) * var(--h-demult, 1))}.content .cta[data-v-f5bee8ee]{--title: calc((30px) * var(--h-demult, 1));--height: calc((90px) * var(--h-demult, 1));display:flex;flex-direction:column;align-items:flex-end;justify-content:space-between;width:100%;height:var(--height);font-family:var(--font-title);font-size:var(--title);font-weight:400;color:#fff;text-align:right;text-transform:uppercase}.content .cta div[data-v-f5bee8ee]{text-shadow:-1px -1px 0 rgba(255,255,255,0),0 -1px 0 rgba(255,255,255,0),1px -1px 0 rgba(255,255,255,0),1px 0 0 rgba(255,255,255,0),1px 1px 0 rgba(255,255,255,0),0 1px 0 rgba(255,255,255,0),-1px 1px 0 rgba(255,255,255,0),-1px 0 0 rgba(255,255,255,0),0 0 20px rgba(255,255,255,0);cursor:pointer;transition:text-shadow .5s cubic-bezier(.23,1,.32,1)}.content .cta div span[data-v-f5bee8ee]{display:inline-block}.content .cta div[data-v-f5bee8ee]:focus-visible{text-shadow:-1px -1px 0 rgba(255,255,255,.5),0 -1px 0 rgba(255,255,255,.5),1px -1px 0 rgba(255,255,255,.5),1px 0 0 rgba(255,255,255,.5),1px 1px 0 rgba(255,255,255,.5),0 1px 0 rgba(255,255,255,.5),-1px 1px 0 rgba(255,255,255,.5),-1px 0 0 rgba(255,255,255,.5),0 0 20px white}.content .links[data-v-f5bee8ee]{--height: calc((120px) * var(--h-demult, 1));display:flex;flex-direction:column;align-items:flex-end;justify-content:space-between;width:100%;height:var(--height);text-align:right}.content .links a[data-v-f5bee8ee]{--text: calc((20px) * var(--h-demult, 1));font-family:var(--font-text);font-size:var(--text);font-weight:400;line-height:calc(var(--text) + 15);color:#fff;outline:none;opacity:.7;transition:opacity .8s}.content .links a[data-v-f5bee8ee]:focus-visible{opacity:1}.content .lang[data-v-f5bee8ee]{display:flex;flex-direction:row;align-items:center;justify-content:flex-end;width:100%;color:#fff;text-align:right}.content .lang[data-v-f5bee8ee]:focus-visible{opacity:.75}.content .lang svg[data-v-f5bee8ee]{width:18px;fill:#fff}.content .lang .language-picker[data-v-f5bee8ee]{position:relative;bottom:0;left:0;font-family:var(--font-text);font-size:18px;font-weight:700;border:none}.menu-overlay[data-v-f5bee8ee]{position:fixed;top:0;left:0;z-index:2;width:100vw;height:100vh;pointer-events:none;cursor:pointer;background:#000;opacity:0;transition:opacity .5s cubic-bezier(.55,0,.1,1)}.menucontainer.visible .menu-overlay[data-v-f5bee8ee]{pointer-events:all;opacity:.55}.menu[data-v-f5bee8ee]{transition:transform .7s cubic-bezier(.55,0,.1,1);transform:translate(100%)}.menu .cta[data-v-f5bee8ee],.menu .links[data-v-f5bee8ee]{transition:transform 1s cubic-bezier(.55,0,.1,1);transform:translate(110%)}.menu .lang[data-v-f5bee8ee]{transition:transform 1s cubic-bezier(.55,0,.1,1),opacity .15s cubic-bezier(.55,0,.1,1);transform:translate(110%)}.menu.visible[data-v-f5bee8ee]{transition:transform 1.2s cubic-bezier(0,.96,.22,1);transform:translate(0)}.menu.visible .cta[data-v-f5bee8ee],.menu.visible .links[data-v-f5bee8ee],.menu.visible .lang[data-v-f5bee8ee]{transition:transform .4s cubic-bezier(.77,0 .175,1);transform:translate(0)}.menu.visible .cta[data-v-f5bee8ee]{transition-duration:.4s}.menu.visible .links[data-v-f5bee8ee]{transition-duration:.6s}.menu.visible .lang[data-v-f5bee8ee]{transition-duration:.8s}@media (min-width: 768px) and (max-width: 1200px){.content[data-v-f5bee8ee]{--padding: calc((2.3148148148vw + 2.2222222222px) * var(--h-demult, 1))}.content .cta[data-v-f5bee8ee]{--title: calc((1.1574074074vw + 21.1111111111px) * var(--h-demult, 1))}.content .cta[data-v-f5bee8ee]{--height: calc((2.3148148148vw + 72.2222222222px) * var(--h-demult, 1))}}@media (min-width: 1200px) and (max-width: 1600px){.menu[data-v-f5bee8ee],.menu .background[data-v-f5bee8ee],.content[data-v-f5bee8ee]{--width: calc((25vw + 100px) * var(--h-demult, 1))}.content .cta[data-v-f5bee8ee]{--title: calc((2.5vw + 5px) * var(--h-demult, 1))}.content .cta[data-v-f5bee8ee]{--height: calc((5vw + 40px) * var(--h-demult, 1))}.content .links a[data-v-f5bee8ee]{--text: calc((1vw + 4px) * var(--h-demult, 1))}}@media (min-width: 1201px){.content[data-v-f5bee8ee]{--padding: calc((30px) * var(--h-demult, 1))}.content .links[data-v-f5bee8ee]{--height: calc((110px) * var(--h-demult, 1))}}@media (min-width: 1601px){.menu[data-v-f5bee8ee],.menu .background[data-v-f5bee8ee],.content[data-v-f5bee8ee]{--width: calc((500px) * var(--h-demult, 1))}.content .cta[data-v-f5bee8ee]{--title: calc((45px) * var(--h-demult, 1))}.content .cta[data-v-f5bee8ee]{--height: calc((120px) * var(--h-demult, 1))}.content .links a[data-v-f5bee8ee]{--text: calc((20px) * var(--h-demult, 1))}}@media (max-width: 639px){.menu[data-v-f5bee8ee]{width:100%;transform:translate(101%)}.menu .background[data-v-f5bee8ee]{width:100%}}@media (hover: hover){.content .cta div[data-v-f5bee8ee]:hover{text-shadow:-1px -1px 0 rgba(255,255,255,.5),0 -1px 0 rgba(255,255,255,.5),1px -1px 0 rgba(255,255,255,.5),1px 0 0 rgba(255,255,255,.5),1px 1px 0 rgba(255,255,255,.5),0 1px 0 rgba(255,255,255,.5),-1px 1px 0 rgba(255,255,255,.5),-1px 0 0 rgba(255,255,255,.5),0 0 20px white;transition:none}.content .cta div:hover span[data-v-f5bee8ee]{-webkit-animation:blinkIn .8s;animation:blinkIn .8s}.content .links a[data-v-f5bee8ee]:hover{opacity:1;transition:opacity 0ms;-webkit-animation:blinkOpacityIn .4s;animation:blinkOpacityIn .4s}.content .lang[data-v-f5bee8ee]:hover{opacity:.75}.menucontainer.visible .menu-overlay[data-v-f5bee8ee]:hover{opacity:.35}}@media (hover: none) and (pointer: coarse){.content .cta div[data-v-f5bee8ee]:active{text-shadow:-1px -1px 0 rgba(255,255,255,.5),0 -1px 0 rgba(255,255,255,.5),1px -1px 0 rgba(255,255,255,.5),1px 0 0 rgba(255,255,255,.5),1px 1px 0 rgba(255,255,255,.5),0 1px 0 rgba(255,255,255,.5),-1px 1px 0 rgba(255,255,255,.5),-1px 0 0 rgba(255,255,255,.5),0 0 20px white;transition:none}.content .cta div:active span[data-v-f5bee8ee]{-webkit-animation:blinkIn .8s;animation:blinkIn .8s}.content .links a[data-v-f5bee8ee]:active{opacity:1;transition:opacity 0ms;-webkit-animation:blinkOpacityIn .4s;animation:blinkOpacityIn .4s}.content .lang[data-v-f5bee8ee]:active{opacity:.75}.menucontainer.visible .menu-overlay[data-v-f5bee8ee]:active{opacity:.35}}@-webkit-keyframes rotateDevice-2eb4872a{0%{opacity:0;transform:rotate(0)}20%{opacity:1}50%{transform:rotate(-90deg)}60%{opacity:1;transform:rotate(-90deg)}80%{opacity:1;transform:rotate(-90deg)}to{opacity:0;transform:rotate(-90deg)}}@keyframes rotateDevice-2eb4872a{0%{opacity:0;transform:rotate(0)}20%{opacity:1}50%{transform:rotate(-90deg)}60%{opacity:1;transform:rotate(-90deg)}80%{opacity:1;transform:rotate(-90deg)}to{opacity:0;transform:rotate(-90deg)}}@-webkit-keyframes appear-2eb4872a{0%{opacity:0;transform:scale(0)}50%{opacity:1;transform:scale(1)}to{opacity:1;transform:scale(1)}}@keyframes appear-2eb4872a{0%{opacity:0;transform:scale(0)}50%{opacity:1;transform:scale(1)}to{opacity:1;transform:scale(1)}}@-webkit-keyframes appearNegative-2eb4872a{0%{opacity:0;transform:scale3d(0,0,0)}50%{opacity:1;transform:scale3d(-1,-1,1)}to{opacity:1;transform:scale3d(-1,-1,1)}}@keyframes appearNegative-2eb4872a{0%{opacity:0;transform:scale3d(0,0,0)}50%{opacity:1;transform:scale3d(-1,-1,1)}to{opacity:1;transform:scale3d(-1,-1,1)}}.rotate-device[data-v-2eb4872a]{position:fixed;top:0;right:0;bottom:0;left:0;z-index:10;display:none;width:100vw;height:100%;overflow:hidden;pointer-events:all;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}.rotate-device img[data-v-2eb4872a]{display:block;width:100%;height:100%;-o-object-fit:cover;object-fit:cover;-o-object-position:bottom!important;object-position:bottom!important}.rotate-background[data-v-2eb4872a]{width:100%;height:100%}.rotate-wrapper[data-v-2eb4872a]{position:absolute;top:0;right:0;bottom:0;left:0;z-index:1;display:flex;flex-flow:column nowrap;align-items:center;justify-content:center}.icon-wrapper[data-v-2eb4872a]{width:100%}.icon-rotate[data-v-2eb4872a]{display:flex;flex-direction:column;align-items:center;justify-content:center;width:30%;margin:auto;transform-origin:center center;-webkit-animation:rotateDevice-2eb4872a 2s cubic-bezier(.55,0,.1,1) infinite paused;animation:rotateDevice-2eb4872a 2s cubic-bezier(.55,0,.1,1) infinite paused}.rotate-mobile[data-v-2eb4872a]{width:25%}.arrow-left[data-v-2eb4872a],.arrow-right[data-v-2eb4872a]{width:15%;margin:10px 0}.arrow-left[data-v-2eb4872a]{-webkit-animation:appear-2eb4872a 2s cubic-bezier(.55,0,.1,1) infinite paused;animation:appear-2eb4872a 2s cubic-bezier(.55,0,.1,1) infinite paused}.arrow-right[data-v-2eb4872a]{transform:scale3d(-1,-1,1);-webkit-animation:appearNegative-2eb4872a 2s cubic-bezier(.55,0,.1,1) infinite paused;animation:appearNegative-2eb4872a 2s cubic-bezier(.55,0,.1,1) infinite paused}.text[data-v-2eb4872a]{font-size:15px;font-weight:700;color:#fff;text-shadow:0 1px 0 rgba(0,0,0,.2)}@media only screen and (orientation: landscape) and (max-width: 1023px){html.phone .rotate-device[data-v-2eb4872a]{display:block;visibility:hidden;transform:translate(0)}html.phone .rotate-device .icon-rotate[data-v-2eb4872a],html.phone .rotate-device .arrow-left[data-v-2eb4872a],html.phone .rotate-device .arrow-right[data-v-2eb4872a]{-webkit-animation-play-state:running;animation-play-state:running}}@media only screen and (orientation: landscape) and (max-width: 1023px) and (min-width: 451px){html.phone .rotate-device[data-v-2eb4872a]{visibility:visible}}.transition-overlay[data-v-12372552]{position:fixed;top:0;right:0;z-index:6;width:100vw;height:100vh;pointer-events:none}.transition-overlay.hidden[data-v-12372552]{visibility:hidden}.transition-overlay.active[data-v-12372552]{pointer-events:all}.overlay[data-v-12372552],.layer[data-v-12372552]{position:absolute;top:0;left:0;width:100%;height:100%}.overlay[data-v-12372552]{z-index:0;background:#251f30;opacity:0;will-change:opacity}.layer[data-v-12372552]{transform:scaleY(0);transform-origin:center bottom;will-change:transform}.layer.gradient[data-v-12372552]{background-color:#6532f9;background-image:linear-gradient(220deg,rgba(254,2,145,.95) -40%,rgba(183,98,255,.95) 28%,rgba(81,67,255,.95) 75%,rgba(0,92,255,.95) 120%,rgba(143,215,255,.95) 165%)}.layer.fill[data-v-12372552]{background:#fff}.cookie-consent{--border-radius: 5px;z-index:2;font-family:var(--font-text);pointer-events:none}.cookie-consent__description{color:#fff}.cookie-consent__description a{transition:color .15s cubic-bezier(.55,0,.1,1)}.cookie-consent__buttons>:first-child{margin-right:10px}.cookie-consent__cta{height:40px;padding:0;border:0;border-radius:var(--border-radius)}.cookie-consent .cta__text{font-weight:700;transition:opacity .3s cubic-bezier(.55,0,.1,1)}.cookie-consent__cta--accept{color:#fff;background:linear-gradient(193deg,rgba(176,60,248,.4901960784) 3.6%,rgba(0,0,0,0) 55%),linear-gradient(169deg,rgba(33,42,255,.2) -1.9%,rgba(108,0,247,0) 67%),rgba(71,16,227,.8901960784);background-color:#fa00ff}.cookie-consent__cta--decline{color:#000;background-color:#fff}.cookie-consent__inner{pointer-events:all;background:rgba(0,0,0,.7)}@media (max-width: 1023px){.cookie-consent__description{color:#000}.cookie-consent__cta--decline{background-color:#eee}.cookie-consent__inner{background:#fff;box-shadow:0 -5px 20px #0000001a}}@media (hover: hover){.cookie-consent__description a:hover{color:#fa00ff}.cookie-consent__cta:hover .cta__text{opacity:.5}}@media (hover: none) and (pointer: coarse){.cookie-consent__description a:active{color:#fa00ff}.cookie-consent__cta:active .cta__text{opacity:.5}}body{overflow-x:hidden;overflow-y:hidden;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}body.scrollable{overflow-y:auto}.webgl-wrapper{z-index:0;pointer-events:none}.ui{max-width:100vw}.page{position:fixed;top:0;right:0;bottom:0;left:0;z-index:1;display:flex;flex-flow:column nowrap;align-items:flex-start;justify-content:flex-start;min-height:100vh;padding:var(--padding)}.icon-logo{position:fixed;right:var(--padding);bottom:var(--padding);z-index:4;width:1em;height:1em;fill:#2c2c2c}h1{color:#2c2c2c}.link{position:relative;display:inline-block;margin-top:.5em;margin-left:.6em;line-height:1.3em;color:#fff}.language-picker{--arrow-width: 2px;position:fixed;bottom:var(--padding);left:var(--padding);z-index:2;padding:.6em 0 .6em .6em;font-size:.3em;text-transform:uppercase;border:1px solid currentColor;border-radius:50px}.debug-gui{z-index:9}.grecaptcha-badge{display:none!important}.grecaptcha-legals{max-width:50%;font-size:11px;font-weight:400;line-height:15px;color:#9b9b9b;text-align:center}.grecaptcha-legals a{color:#ff2070;text-decoration:underline;transition:color .3s ease}@media (max-width: 639px){.language-picker{font-size:14px}.grecaptcha-legals{max-width:90%}}@media (hover: hover){.link:hover{color:#000}.grecaptcha-legals a:hover{color:#8256d5}}@media (hover: none) and (pointer: coarse){.link:active{color:#000}.grecaptcha-legals a:active{color:#8256d5}}</style>
+        <noscript></noscript>
+        <script>!function(w,d){var old=w.isOldBrowser=!!~d.location.search.indexOf("oldbrowser")||!!function(){try{if(!1 in d.createElement("script"))throw 1;new Function('import("")'),eval("")}catch(e){return 1}}(),html=d.getElementsByTagName("html")[0];html.classList.toggle("no-js",old)}(window,document)</script>
+        <link rel="stylesheet" href="./assets/main.4a98444b11ae33ec.css">
+        <script>(function(){var i,j,ss=document.styleSheets;for(i=0;i<ss.length;i++){try{var rules=ss[i].cssRules||ss[i].rules;for(j=0;j<rules.length;j++){var r=rules[j];if(r.type===CSSRule.FONT_FACE_RULE&&r.style){r.style.src=(r.style.src||'').replace(/,url\([^)]+\.woff\)\s*format\(["']woff["']\)/gi,'');r.style.fontDisplay='swap'}}}catch(e){}}})()</script>
+    <style>
+      /* ===== 3D-Breakout 瘦身：隐藏 MSI 营销残留 ===== */
+      .cookie-consent{display:none !important;}
+      .language-picker{display:none !important;}
+      .grecaptcha-badge,.grecaptcha-legals{display:none !important;}
+      /* 右侧中部奖品圆形标签 */
+      .prizes-badge{display:none !important;}
+      /* 原生菜单容器（isMenuOpen 会触发 Vue 重渲染，彻底隐藏） */
+      .menucontainer{display:none !important;}
+      /* 左上角 MSI logo 链接（营销） */
+      .app-header .logo[href*="msi"],.app-header a[href*="msi.com"]{display:none !important;}
+      /* 奖杯按钮样式 */
+      .dzk-trophy-btn{position:relative;width:40px;height:40px;display:flex;align-items:center;justify-content:center;color:#fff;background:rgba(10,10,20,.55);border:1px solid rgba(250,0,255,.5);border-radius:50%;cursor:pointer;pointer-events:all;opacity:1;transition:transform .2s,box-shadow .2s;box-shadow:0 0 12px rgba(81,175,255,.35)}
+      .dzk-trophy-btn:hover{transform:scale(1.08);box-shadow:0 0 18px rgba(250,0,255,.8)}
+      .dzk-trophy-btn svg{display:block}
+      /* 历史记录弹窗 */
+      .dzk-records-modal{position:fixed;top:0;right:0;bottom:0;left:0;z-index:2147483646;display:none;align-items:center;justify-content:center;background:rgba(0,0,0,.55)}
+      .dzk-records-modal.open{display:flex}
+      .dzk-records-card{position:relative;min-width:260px;max-width:90vw;padding:28px 32px;border-radius:16px;background:linear-gradient(160deg,rgba(40,20,60,.96),rgba(20,15,40,.96));border:1px solid rgba(250,0,255,.45);box-shadow:0 10px 40px rgba(81,67,255,.45);color:#fff;font-family:"Exo2",Arial,Helvetica,sans-serif;text-align:center}
+      .dzk-records-card h2{margin:0 0 6px;font-size:20px;font-weight:700;letter-spacing:.05em}
+      .dzk-records-card .dzk-best-num{font-size:42px;font-weight:800;color:#51AFFF;line-height:1.1;margin:8px 0 2px;text-shadow:0 0 18px rgba(81,175,255,.6)}
+      .dzk-records-card .dzk-sub{font-size:12px;opacity:.7;margin-top:4px}
+      .dzk-records-card .dzk-close{position:absolute;top:10px;right:14px;font-size:20px;line-height:1;color:#fff;opacity:.6;cursor:pointer;background:none;border:none}
+      .dzk-records-card .dzk-close:hover{opacity:1}
+      .dzk-records-card .dzk-last{margin-top:14px;padding-top:12px;border-top:1px solid rgba(255,255,255,.15);font-size:13px;opacity:.85}
+      .dzk-records-card .dzk-best-time{font-size:12px;color:#cdb4ff;opacity:.85;margin-top:2px}
+      .dzk-records-card .dzk-records-list{margin-top:16px;padding-top:14px;border-top:1px solid rgba(255,255,255,.15);text-align:left}
+      .dzk-records-card .dzk-records-list .dzk-rl-title{font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;opacity:.65;margin-bottom:8px;text-align:center}
+      .dzk-records-card .dzk-record-row{display:flex;justify-content:space-between;align-items:baseline;padding:5px 4px;border-radius:6px;font-size:13px}
+      .dzk-record-row:nth-child(odd){background:rgba(255,255,255,.045)}
+      .dzk-record-row .rk{width:22px;color:#cdb4ff;font-weight:600;flex-shrink:0}
+      .dzk-record-row .sc{color:#fff;font-weight:700;font-size:15px;flex-shrink:0}
+      .dzk-record-row .tm{margin-left:8px;color:rgba(255,255,255,.55);font-size:12px;text-align:right;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+      /* 选关弹窗 */
+      .dzk-level-modal{position:fixed;top:0;right:0;bottom:0;left:0;z-index:2147483645;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,0);opacity:0;visibility:hidden;pointer-events:none;transition:opacity .35s ease,visibility .35s ease}
+      .dzk-level-modal.open{background:rgba(0,0,0,.68);opacity:1;visibility:visible;pointer-events:auto}
+      .dzk-level-card{position:relative;width:880px;max-width:96vw;max-height:88vh;padding:22px 26px 20px;border-radius:18px;background:linear-gradient(160deg,rgba(45,22,72,.97),rgba(18,12,38,.97));border:1px solid rgba(250,0,255,.5);box-shadow:0 14px 60px rgba(81,67,255,.55),0 0 0 1px rgba(250,0,255,.12) inset;color:#fff;font-family:"Exo2",Arial,Helvetica,sans-serif;overflow-y:auto;display:block;transform:translateY(16px) scale(.97);opacity:0;transition:transform .4s cubic-bezier(.22,1,.36,1),opacity .3s ease;scrollbar-width:thin;scrollbar-color:rgba(250,0,255,.5) transparent}
+      .dzk-level-card::-webkit-scrollbar{width:8px}
+      .dzk-level-card::-webkit-scrollbar-track{background:transparent}
+      .dzk-level-card::-webkit-scrollbar-thumb{background:linear-gradient(180deg,rgba(250,0,255,.5),rgba(81,67,255,.5));border:none;border-radius:999px}
+      .dzk-level-card::-webkit-scrollbar-thumb:hover{background:linear-gradient(180deg,rgba(250,0,255,.8),rgba(81,67,255,.8))}
+      .dzk-level-modal.open .dzk-level-card{transform:translateY(0) scale(1);opacity:1}
+      .dzk-level-card h2{margin:0 0 4px;font-size:26px;font-weight:800;letter-spacing:.06em;text-align:center;background:linear-gradient(135deg,#FA8FFF,#8FD8FF);-webkit-background-clip:text;background-clip:text;color:transparent}
+      .dzk-level-sub{margin:0 0 14px;font-size:12px;opacity:.6;text-align:center}
+      .dzk-level-card .dzk-close{position:absolute;top:12px;right:16px;font-size:22px;line-height:1;color:#fff;opacity:.6;cursor:pointer;background:none;border:none;z-index:2}
+      .dzk-level-groups{overflow-y:auto;padding:4px 8px 4px 0;scrollbar-width:thin;scrollbar-color:rgba(250,0,255,.4) transparent}
+      .dzk-level-groups::-webkit-scrollbar{width:6px}
+      .dzk-level-groups::-webkit-scrollbar-track{background:transparent}
+      .dzk-level-groups::-webkit-scrollbar-thumb{background:linear-gradient(180deg,rgba(250,0,255,.5),rgba(81,67,255,.5));border-radius:999px}
+      .dzk-level-groups::-webkit-scrollbar-thumb:hover{background:linear-gradient(180deg,rgba(250,0,255,.8),rgba(81,67,255,.8))}
+      .dzk-level-group{margin-bottom:18px}
+      .dzk-level-diff{display:flex;align-items:center;gap:10px;width:100%;font-size:13px;font-weight:800;letter-spacing:.12em;margin-bottom:10px;padding:6px 10px 6px 12px;border-left:3px solid;text-transform:uppercase;background:none;border-top:none;border-right:none;border-bottom:none;font-family:inherit;cursor:pointer;text-align:left;border-radius:0 8px 8px 0;transition:background .15s}
+      .dzk-level-diff:hover{background:rgba(255,255,255,.05)}
+      .dzk-level-diff:focus-visible{outline:1px solid rgba(255,255,255,.4)}
+      .dzk-level-fold-arrow{margin-left:auto;font-size:11px;opacity:.55;transition:transform .25s}
+      .dzk-level-group.dzk-folded .dzk-level-fold-arrow{transform:rotate(-90deg)}
+      .dzk-level-group .dzk-level-list{display:grid;overflow:hidden}
+      .dzk-level-group.dzk-folded .dzk-level-list{display:none}
+      .dzk-level-diff-icon{width:22px;height:22px;display:inline-flex;align-items:center;justify-content:center;border-radius:6px;background:rgba(255,255,255,.06);font-size:12px;line-height:1;letter-spacing:0}
+      .dzk-level-diff-count{margin-left:auto;padding:2px 9px;border-radius:999px;background:rgba(255,255,255,.08);font-size:10px;font-weight:700;letter-spacing:.04em;opacity:.85;font-variant-numeric:tabular-nums;text-transform:none}
+      .dzk-level-list{display:grid;grid-template-columns:repeat(auto-fill,minmax(112px,1fr));gap:10px}
+      .dzk-level-btn{position:relative;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;width:100%;min-height:72px;padding:10px 8px;border-radius:12px;background:linear-gradient(180deg,rgba(255,255,255,.06),rgba(255,255,255,.02));border:1px solid rgba(255,255,255,.14);color:#fff;cursor:pointer;transition:transform .15s,background .15s,border-color .15s,box-shadow .15s;overflow:hidden}
+      .dzk-level-btn:hover{transform:translateY(-2px);background:linear-gradient(180deg,rgba(250,0,255,.18),rgba(81,67,255,.12));border-color:rgba(250,0,255,.6);box-shadow:0 6px 18px rgba(250,0,255,.25)}
+      .dzk-level-btn:active{transform:translateY(0)}
+      .dzk-level-name{font-size:15px;font-weight:700;letter-spacing:.04em;line-height:1.2;text-align:center}
+      .dzk-level-en{font-size:10px;font-weight:500;opacity:.5;text-transform:uppercase;letter-spacing:.06em}
+      .dzk-level-num{position:absolute;top:5px;left:7px;font-size:9px;font-weight:700;letter-spacing:.04em;opacity:.4;font-variant-numeric:tabular-nums}
+      .dzk-level-card .dzk-close{position:absolute;top:12px;right:16px;font-size:22px;line-height:1;color:#fff;opacity:.6;cursor:pointer;background:none;border:none;z-index:2}
+      .dzk-level-card .dzk-close:hover{opacity:1}
+      /* 上次游玩标记（更醒目的徽章） */
+      .dzk-level-btn-last{border-color:rgba(81,175,255,.85);box-shadow:0 0 0 1px rgba(81,175,255,.55) inset,0 0 16px rgba(81,175,255,.25)}
+      .dzk-level-btn-last .dzk-level-name{color:#9DD9FF}
+      .dzk-level-btn-last:after{content:"上次玩过";position:absolute;top:0;right:0;padding:2px 7px;border-bottom-left-radius:8px;font-size:9px;font-weight:800;letter-spacing:.04em;color:#0c1428;background:linear-gradient(135deg,#8FD8FF,#51AFFF)}
+      /* === 选关面板布局（2026-08-24 改版：单栏，无尽卡缩小一半，设置折叠） === */
+      .dzk-level-body{display:block}
+      /* 顶部行：无尽模式入口 + 关卡/游玩数据卡 */
+      .dzk-level-top{display:flex;gap:14px;align-items:stretch;margin-bottom:14px}
+      /* 无尽模式卡片 */
+      .dzk-endless-card{display:flex;align-items:center;justify-content:space-between;gap:14px;flex:1 1 0;min-width:0;padding:9px 14px;border-radius:12px;background:linear-gradient(135deg,rgba(81,67,255,.32),rgba(250,0,255,.22));border:1px solid rgba(250,0,255,.55);box-shadow:0 0 22px rgba(81,67,255,.28) inset,0 4px 18px rgba(250,0,255,.18);position:relative;overflow:hidden}
+      .dzk-endless-card:before{content:"";position:absolute;inset:0;background:radial-gradient(120px 70px at 92% -10%,rgba(143,215,255,.4),transparent 70%);pointer-events:none}
+      .dzk-endless-info{flex:1;min-width:0}
+      .dzk-endless-title{font-size:15px;font-weight:800;letter-spacing:.04em;display:flex;align-items:center;gap:6px}
+      .dzk-endless-desc{margin-top:2px;font-size:10px;opacity:.75;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+      .dzk-endless-floor{margin-top:2px;font-size:11px;opacity:.92}
+      .dzk-endless-floor b{font-size:13px;font-weight:800;color:#fff;margin:0 2px}
+      .dzk-endless-btn{flex-shrink:0;padding:7px 16px;border-radius:10px;font-size:13px;font-weight:800;letter-spacing:.05em;color:#fff;background:linear-gradient(135deg,#5143FF,#FA00FF);border:none;cursor:pointer;transition:transform .15s,box-shadow .15s;box-shadow:0 4px 18px rgba(250,0,255,.5)}
+      .dzk-endless-btn:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(250,0,255,.7)}
+      .dzk-endless-btn:active{transform:translateY(0)}
+      /* 数据卡：关卡数据 + 游玩数据 */
+      .dzk-stats-card{flex:1 1 0;min-width:0;display:flex;flex-direction:column;justify-content:space-between;gap:10px;padding:10px 14px;border-radius:12px;background:rgba(0,0,0,.26);border:1px solid rgba(255,255,255,.1)}
+      .dzk-stats-title{font-size:11px;font-weight:800;letter-spacing:.12em;opacity:.6;margin-bottom:6px}
+      .dzk-stats-levels{display:flex;flex-wrap:wrap;gap:5px}
+      .dzk-stat-chip{display:inline-flex;align-items:center;gap:4px;padding:3px 8px;border-radius:999px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);font-size:10px;font-weight:700;white-space:nowrap}
+      .dzk-stat-chip i{font-style:normal}
+      .dzk-stat-chip b{font-size:11px;font-variant-numeric:tabular-nums}
+      .dzk-stat-chip-total{color:#FA8FFF;border-color:rgba(250,0,255,.35)}
+      .dzk-stat-chip-total b{color:#FA8FFF}
+      .dzk-stats-play{display:grid;grid-template-columns:1fr 1fr;gap:4px 14px}
+      .dzk-stat-item{display:flex;justify-content:space-between;align-items:baseline;gap:8px;font-size:11px;min-width:0}
+      .dzk-stat-k{opacity:.55;white-space:nowrap}
+      .dzk-stat-v{font-weight:800;color:#51AFFF;font-variant-numeric:tabular-nums;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+      /* === 弹窗霓虹顶线（与结算弹窗 .popin::before 一致） === */
+      .dzk-level-card::before,.dzk-records-card::before{content:"";position:absolute;top:-1px;left:24px;right:24px;height:2px;background:linear-gradient(90deg,transparent,#fa00ff,#00dcff,transparent);opacity:.85;pointer-events:none}
+      /* === 选项卡：关卡 / 设置（2026-09-19 改版，设置不再埋在关卡列表底部） === */
+      .dzk-tabs{display:flex;gap:6px;margin:14px 0 16px;padding:5px;border-radius:14px;background:rgba(0,0,0,.32);border:1px solid rgba(255,255,255,.09)}
+      .dzk-tab{flex:1;padding:10px 0;border:none;border-radius:10px;background:transparent;color:rgba(255,255,255,.5);font-family:inherit;font-size:13px;font-weight:700;letter-spacing:.18em;cursor:pointer;transition:color .2s,background .2s,box-shadow .2s}
+      .dzk-tab:hover{color:rgba(255,255,255,.85)}
+      .dzk-tab.active{color:#fff;background:linear-gradient(135deg,rgba(250,0,255,.3),rgba(81,67,255,.32));box-shadow:0 0 18px rgba(250,0,255,.22),0 0 0 1px rgba(255,255,255,.12) inset}
+      .dzk-tabpane{display:none}
+      .dzk-tabpane.active{display:block;animation:dzk-fade-in .3s ease}
+      @keyframes dzk-fade-in{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+      /* === 设置页：左「游戏参数」/ 右「小球效果」双栏 === */
+      .dzk-settings-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;align-items:start}
+      /* 无尽公平模式：提示条 + 设置锁定 */
+      .dzk-fair-notice{margin-bottom:12px;padding:10px 14px;border-radius:10px;font-size:12px;font-weight:600;letter-spacing:.04em;color:#FFE27A;background:rgba(255,200,60,.1);border:1px solid rgba(255,200,60,.45);text-align:center}
+      .dzk-tabpane.fair-locked .dzk-settings-col,.dzk-tabpane.fair-locked .dzk-settings-footer{opacity:.45;pointer-events:none;filter:saturate(.6)}
+      .dzk-endless-fair{margin-top:3px;font-size:10px;font-weight:700;letter-spacing:.04em;color:#FFE27A;opacity:.9}
+      .dzk-settings-col{padding:14px 16px 16px;border-radius:14px;background:rgba(0,0,0,.26);border:1px solid rgba(255,255,255,.1)}
+      .dzk-settings-head{display:flex;align-items:center;gap:8px;margin:0 0 12px;padding-bottom:10px;border-bottom:1px solid rgba(255,255,255,.08)}
+      .dzk-settings-title{font-size:13px;font-weight:800;letter-spacing:.16em}
+      .dzk-settings-hint{margin-left:auto;font-size:10px;opacity:.45;letter-spacing:.03em}
+      .col-params .dzk-settings-title{color:#FFC83C;text-shadow:0 0 10px rgba(255,200,60,.3)}
+      .col-bonus .dzk-settings-title{color:#9DD9FF;text-shadow:0 0 10px rgba(81,175,255,.3)}
+      /* 参数说明（左栏底部，平衡双栏高度） */
+      .dzk-param-tips{margin-top:14px;padding-top:12px;border-top:1px solid rgba(255,255,255,.07);display:flex;flex-direction:column;gap:7px}
+      .dzk-param-tip{font-size:11px;line-height:1.5;opacity:.55}
+      .dzk-param-tip b{margin-right:8px;font-weight:700;color:rgba(255,200,60,.85);opacity:1}
+      /* 参数滑杆行 */
+      .dzk-opt-row{display:flex;align-items:center;gap:10px;margin:11px 0}
+      /* 终极作弊行（自动吸附） */
+      .dzk-ultimate-row{display:flex;align-items:center;gap:10px;padding:9px 10px;margin:2px 0 10px;border-radius:10px;background:linear-gradient(135deg,rgba(250,0,255,.12),rgba(255,60,90,.08));border:1px solid rgba(255,80,110,.4)}
+      .dzk-ultimate-toggle:not(.on){background:rgba(255,255,255,.14)}
+      .dzk-ultimate-toggle.on{background:linear-gradient(135deg,#FF3C5A,#FA00FF);border-color:transparent}
+      .dzk-ultimate-info{flex:1;min-width:0}
+      .dzk-ultimate-name{font-size:12px;font-weight:800;letter-spacing:.04em;color:#FF8A9A;text-shadow:0 0 8px rgba(255,60,90,.35)}
+      .dzk-ultimate-desc{margin-top:2px;font-size:10px;line-height:1.4;opacity:.55}
+      .dzk-opt-row label{flex:0 0 72px;font-size:12px;font-weight:600;opacity:.92}
+      .dzk-opt-val{flex:0 0 52px;text-align:right;font-size:12px;font-weight:700;color:#FFC83C;font-variant-numeric:tabular-nums;text-shadow:0 0 8px rgba(255,200,60,.35)}
+      /* 自定义滑杆：彩色填充轨道（--pct 由 JS 同步）+ 白色圆钮 */
+      .dzk-opt-row input[type=range],.dzk-bonus-weight{-webkit-appearance:none;appearance:none;flex:1;min-width:0;height:6px;border-radius:999px;outline:none;cursor:pointer;border:none;background:linear-gradient(90deg,var(--rc,#FFC83C) 0%,var(--rc,#FFC83C) var(--pct,50%),rgba(255,255,255,.14) var(--pct,50%),rgba(255,255,255,.14) 100%)}
+      .dzk-opt-row input[type=range]::-webkit-slider-thumb,.dzk-bonus-weight::-webkit-slider-thumb{-webkit-appearance:none;appearance:none;width:15px;height:15px;border-radius:50%;background:#fff;border:none;box-shadow:0 0 0 3px rgba(255,255,255,.18),0 2px 8px rgba(0,0,0,.55);transition:transform .15s}
+      .dzk-opt-row input[type=range]:hover::-webkit-slider-thumb,.dzk-bonus-weight:hover::-webkit-slider-thumb{transform:scale(1.18)}
+      .dzk-opt-row input[type=range]::-moz-range-thumb,.dzk-bonus-weight::-moz-range-thumb{width:15px;height:15px;border-radius:50%;background:#fff;border:none;box-shadow:0 0 0 3px rgba(255,255,255,.18),0 2px 8px rgba(0,0,0,.55)}
+      .dzk-bonus-weight{--rc:#51AFFF}
+      /* 小球效果行：胶囊开关 + 名称 + 权重滑杆 + 说明文字 */
+      .dzk-bonus-list{display:flex;flex-direction:column;gap:6px}
+      .dzk-bonus-row{display:flex;flex-direction:column;gap:3px;padding:7px 9px;border-radius:10px;background:rgba(255,255,255,.045);border:1px solid rgba(255,255,255,.06);transition:opacity .2s,border-color .2s}
+      .dzk-bonus-row:hover{border-color:rgba(255,255,255,.16)}
+      .dzk-bonus-line{display:flex;align-items:center;gap:9px}
+      .dzk-bonus-desc{padding-left:43px;font-size:11px;line-height:1.4;opacity:.5;letter-spacing:.02em}
+      .dzk-bonus-row.disabled{opacity:.35}
+      .dzk-bonus-row.disabled .dzk-bonus-name{text-decoration:line-through}
+      .dzk-bonus-toggle{flex:0 0 34px;width:34px;height:20px;padding:0;border-radius:999px;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.16);position:relative;cursor:pointer;transition:background .2s,border-color .2s}
+      .dzk-bonus-toggle:after{content:"";position:absolute;top:2px;left:2px;width:14px;height:14px;border-radius:50%;background:#fff;box-shadow:0 1px 3px rgba(0,0,0,.45);transition:left .2s cubic-bezier(.22,1,.36,1)}
+      .dzk-bonus-toggle.on{background:linear-gradient(135deg,#5143FF,#FA00FF);border-color:transparent}
+      .dzk-bonus-toggle.on:after{left:16px}
+      .dzk-bonus-name{flex:0 0 74px;font-size:12px;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+      .dzk-bonus-weight-val{flex:0 0 44px;text-align:right;font-size:11px;font-weight:700;color:#9DD9FF;font-variant-numeric:tabular-nums;text-shadow:0 0 8px rgba(81,175,255,.35)}
+      /* 恢复默认 */
+      .dzk-settings-footer{margin-top:14px;text-align:center}
+      .dzk-opt-reset{padding:9px 28px;border-radius:999px;font-size:12px;font-weight:700;letter-spacing:.12em;color:rgba(255,255,255,.75);background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.16);cursor:pointer;transition:color .2s,background .2s,border-color .2s}
+      .dzk-opt-reset:hover{color:#fff;background:rgba(250,0,255,.16);border-color:rgba(250,0,255,.55)}
+      /* 窄屏：卡片更宽，顶部行纵向堆叠 */
+      @media(max-width:880px){.dzk-level-card{max-width:94vw;max-height:92vh}.dzk-level-top{flex-direction:column}.dzk-endless-card{flex:none;width:auto}.dzk-settings-grid{grid-template-columns:1fr}}
+      /* Home 键按钮（替换左上角 MSI logo） */
+      .dzk-home-btn{position:relative;display:flex;align-items:center;justify-content:center;width:var(--logo-size,60px);height:calc(var(--logo-size,60px) * .6);color:#fff;background:transparent;border:none;cursor:pointer;opacity:.85;transition:opacity .2s,transform .2s;pointer-events:all}
+      .dzk-home-btn:hover{opacity:1;transform:scale(1.06)}
+      .dzk-home-btn svg{display:block;filter:drop-shadow(0 0 6px rgba(255,255,255,.25))}
+      /* 刷新按钮（home 键右侧，绝对定位紧贴 home）：卡死时强制重启 */
+      .dzk-refresh-btn{position:absolute;left:100%;top:50%;transform:translateY(-50%);display:flex;align-items:center;justify-content:center;width:calc(var(--logo-size,60px) * .56);height:calc(var(--logo-size,60px) * .6);color:#fff;background:transparent;border:none;cursor:pointer;opacity:.85;transition:opacity .2s,color .2s;pointer-events:all}
+      .dzk-refresh-btn:hover{opacity:1;color:#ff8ef0}
+      .dzk-refresh-btn svg{display:block;filter:drop-shadow(0 0 6px rgba(255,143,240,.35))}
+      .dzk-refresh-btn:hover svg{animation:dzk-spin .6s linear}
+      @keyframes dzk-spin{from{transform:rotate(0)}to{transform:rotate(360deg)}}
+      /* Home 主菜单弹窗 */
+      .dzk-home-modal{position:fixed;top:0;right:0;bottom:0;left:0;z-index:2147483644;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,0);opacity:0;visibility:hidden;pointer-events:none;transition:opacity .35s ease,visibility .35s ease}
+      .dzk-home-modal.open{background:rgba(0,0,0,.45);opacity:1;visibility:visible;pointer-events:auto}
+      .dzk-home-actions{display:flex;flex-direction:row;justify-content:center;align-items:flex-start;gap:36px;padding:0;opacity:0;transform:translateY(14px);transition:opacity .3s ease,transform .4s cubic-bezier(.22,1,.36,1)}
+      .dzk-home-modal.open .dzk-home-actions{opacity:1;transform:translateY(0)}
+      .dzk-home-btn-action{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;padding:0;background:transparent;border:none;color:#fff;cursor:pointer;transition:color .15s,transform .15s}
+      .dzk-home-btn-action:hover{color:#ff8ef0;transform:translateY(-3px)}
+      .dzk-home-btn-action svg{width:44px;height:44px;display:block;filter:drop-shadow(0 0 8px rgba(250,0,255,.45))}
+      .dzk-home-btn-action span{font-size:13px;font-weight:600;letter-spacing:.1em;text-shadow:0 1px 6px rgba(0,0,0,.6)}
+      .dzk-home-card .dzk-close{position:absolute;top:10px;right:14px;font-size:20px;line-height:1;color:#fff;opacity:.6;cursor:pointer;background:none;border:none}
+      .dzk-home-card .dzk-close:hover{opacity:1}
+      /* ===== 最终成绩弹窗瘦身：只留 最终成绩 / 点数 / 再试一次 ===== */
+      .popin .results-tiers__rotation{display:none !important;}
+      .popin .cta-register.form-launch{display:none !important;}
+      .popin .prizes-footer{display:none !important;}
+      /* 标题去掉 " / 等級一" 后缀（保留最终成绩） */
+      .popin .results-title{font-size:20px !important;}
+      /* ===== 最终成绩弹窗美化 ===== */
+      /* 重写 .popin 容器：固定居中、深色实心、霓虹光晕 */
+      .page.page-results{display:flex !important;align-items:center !important;justify-content:center !important}
+      .popin{position:relative;width:380px;max-width:90vw;padding:36px 32px 32px !important;border-radius:20px !important;background:linear-gradient(160deg,rgba(28,12,48,.97),rgba(12,8,28,.97)) !important;border:1px solid rgba(255,120,200,.5) !important;box-shadow:0 20px 60px rgba(0,0,0,.6),0 0 0 1px rgba(255,255,255,.05) inset,0 0 80px rgba(250,0,255,.25) !important;color:#fff;font-family:"Exo2",Arial,Helvetica,sans-serif;text-align:center;overflow:hidden}
+      .popin::before{content:"";position:absolute;top:-1px;left:24px;right:24px;height:2px;background:linear-gradient(90deg,transparent,#fa00ff,#00dcff,transparent);opacity:.85;pointer-events:none}
+      .popin__header{margin-bottom:0 !important;padding:0 !important;width:100% !important;display:flex !important;flex-direction:column !important;align-items:center !important;justify-content:center !important}
+      .popin__results-text{display:flex !important;flex-direction:column !important;align-items:center !important;justify-content:center !important;gap:6px;width:100% !important;padding:0 !important;margin:0 !important}
+      .popin .results-title{font-size:13px !important;letter-spacing:.3em;font-weight:500;opacity:.65;text-transform:uppercase;margin:0 0 4px !important;padding:0 !important;color:#cdb4ff !important;text-align:center !important;align-self:center !important;font-family:"Exo2",Arial,Helvetica,sans-serif}
+      .popin__score{position:relative !important;display:flex !important;flex-direction:row !important;align-items:center !important;justify-content:center !important;gap:6px;margin:8px 0 4px !important;padding:0 !important;background:transparent !important;text-shadow:none !important;font-family:"Exo2",Arial,Helvetica,sans-serif;align-self:center !important;width:auto !important}
+      /* 彩虹渐变文字：红橙黄绿青蓝紫，无背景辉光 */
+      .popin__score span,.popin .score-value{background:linear-gradient(90deg,#ff4d4d 0%,#ff9f43 18%,#ffd93d 34%,#6bff6b 50%,#37d5ff 68%,#7a6bff 84%,#ff4dd2 100%) !important;-webkit-background-clip:text !important;background-clip:text !important;-webkit-text-fill-color:transparent !important;color:transparent !important;text-shadow:none !important;filter:none !important;font-size:72px !important;font-weight:800 !important;line-height:1 !important;letter-spacing:-.02em;display:inline-block !important;font-family:"Exo2",Arial,Helvetica,sans-serif}
+      .popin__content{display:flex !important;flex-direction:column !important;align-items:center !important;justify-content:center !important;padding:0 !important;background:transparent !important;width:100% !important}
+      .popin__content::after{display:none !important}
+      .popin__buttons{display:flex !important;align-items:center !important;justify-content:center !important;width:100% !important;margin-top:24px !important;padding:0 !important}
+      .popin__buttons{display:flex;gap:12px !important;justify-content:center;width:100% !important;margin-top:24px !important;padding:0 !important}
+      .popin .cta-retry{position:relative !important;display:flex !important;align-items:center !important;justify-content:center !important;gap:8px;min-width:0 !important;height:50px !important;padding:0 16px !important;border-radius:999px !important;background:linear-gradient(135deg,#fa00ff 0%,#5143ff 100%) !important;border:none !important;color:#fff !important;font-size:15px !important;font-weight:700 !important;letter-spacing:.05em !important;text-transform:uppercase !important;white-space:nowrap !important;cursor:pointer;transition:transform .2s,box-shadow .2s;box-shadow:0 8px 24px rgba(250,0,255,.4),0 0 0 1px rgba(255,255,255,.15) inset}
+      .popin .cta-retry:hover{transform:translateY(-2px);box-shadow:0 12px 32px rgba(250,0,255,.6),0 0 0 1px rgba(255,255,255,.2) inset}
+      .popin .cta-retry svg{width:18px !important;height:18px !important}
+      .popin .cta-retry .text{font-size:15px !important;font-weight:700 !important;letter-spacing:.15em !important}
+      /* 结算页按钮：再试一次 + 选择关卡 并排各占一半 */
+      .popin__buttons{gap:12px !important}
+      .popin .popin__buttons .cta-retry,
+      .popin .popin__buttons .cta-level-select{flex:0 0 calc(50% - 6px) !important;width:calc(50% - 6px) !important;min-width:0 !important;max-width:none !important;margin:0 !important}
+      /* retry 内部 svg+text 自然高度会撑高按钮，强制 line-height:1 保持 50px 高度 */
+      .popin .popin__buttons .cta-retry{line-height:1 !important;overflow:hidden !important}
+      .popin .popin__buttons .cta-retry .text{line-height:1 !important;display:inline-flex !important;align-items:center !important}
+      .popin .popin__buttons .cta-retry svg{flex:0 0 auto !important}
+      .popin .cta-level-select{position:relative !important;display:flex !important;align-items:center !important;justify-content:center !important;height:50px !important;padding:0 12px !important;border-radius:999px !important;background:linear-gradient(135deg,#00dcff 0%,#5143ff 100%) !important;border:none !important;color:#fff !important;font-size:15px !important;font-weight:700 !important;letter-spacing:.05em !important;text-transform:uppercase !important;white-space:nowrap !important;cursor:pointer;transition:transform .2s,box-shadow .2s;box-shadow:0 8px 24px rgba(0,220,255,.35),0 0 0 1px rgba(255,255,255,.15) inset}
+      .popin .cta-level-select:hover{transform:translateY(-2px);box-shadow:0 12px 32px rgba(0,220,255,.55),0 0 0 1px rgba(255,255,255,.2) inset}
+      .popin__content{padding:0 !important;background:transparent !important}
+      .popin__content::after{display:none !important}
+      /* ===== 顶部两列竖版面板：左无尽 右排行榜，数据卡横条在下 ===== */
+      .dzk-level-top{display:flex;gap:14px;align-items:stretch;margin-bottom:10px;height:164px}
+      .dzk-level-top > *{flex:0 0 calc((100% - 28px) / 3);min-width:0}
+      .dzk-level-top .dzk-endless-card{flex-direction:column;align-items:stretch;justify-content:flex-start;gap:3px;padding:10px 14px 12px}
+      .dzk-level-top .dzk-endless-btn{margin-top:auto;width:100%;text-align:center}
+      .dzk-endless-floor{font-size:11px;opacity:.92}
+      .dzk-level-top .dzk-endless-desc{white-space:normal;overflow:visible;text-overflow:clip;font-size:9px;line-height:1.55;opacity:.8;margin-top:4px}
+      .dzk-top-left .dzk-endless-desc{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+      .dzk-lb-card{flex:1 1 0;min-height:0;position:relative;display:flex;flex-direction:column;gap:5px;padding:8px 12px 9px;border-radius:12px;background:rgba(0,0,0,.26);border:1px solid rgba(0,220,255,.3);box-shadow:0 0 18px rgba(0,220,255,.12) inset}
+      .dzk-lb-head{display:flex;align-items:center;gap:8px;flex-shrink:0}
+      .dzk-lb-title{font-size:11px;font-weight:800;letter-spacing:.06em;opacity:.85;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+      .dzk-lb-spacer{flex:1}
+      .dzk-lb-mine{font-size:10px;color:#51AFFF;font-weight:800;white-space:nowrap}
+      .dzk-lb-gear{flex-shrink:0;width:20px;height:20px;border-radius:6px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.16);color:#fff;font-size:11px;line-height:1;cursor:pointer;padding:0}
+      .dzk-lb-gear:hover{background:rgba(255,255,255,.16)}
+      .dzk-lb-list{flex:1 1 0;min-height:0;overflow-y:auto;display:flex;flex-direction:column;gap:2px;scrollbar-width:thin;scrollbar-color:rgba(0,220,255,.4) transparent}
+      .dzk-lb-row{display:flex;align-items:center;gap:7px;font-size:11px;padding:2px 7px;border-radius:6px;background:rgba(255,255,255,.045);flex-shrink:0}
+      .dzk-lb-row.me{background:rgba(81,175,255,.16);outline:1px solid rgba(81,175,255,.4)}
+      .dzk-lb-rank{width:20px;font-weight:800;color:#FFD75E;text-align:center;flex-shrink:0}
+      .dzk-lb-name{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;opacity:.9}
+      .dzk-lb-score{font-weight:800;color:#FA00FF;white-space:nowrap;font-variant-numeric:tabular-nums}
+      .dzk-lb-floor{flex-shrink:0;font-weight:800;color:#8FD8FF;white-space:nowrap;font-variant-numeric:tabular-nums}
+      .dzk-lb-date{flex-shrink:0;font-size:9px;opacity:.5;white-space:nowrap;font-variant-numeric:tabular-nums}
+      .dzk-lb-empty{font-size:10px;opacity:.5;text-align:center;padding:7px 0}
+      .dzk-lb-settings{position:absolute;left:10px;right:10px;bottom:10px;z-index:6;display:flex;flex-direction:column;gap:5px;padding:8px 10px;border-radius:8px;background:rgba(8,8,18,.96);border:1px solid rgba(0,220,255,.45);box-shadow:0 10px 34px rgba(0,0,0,.6)}
+      .dzk-lb-settings label{font-size:9px;opacity:.7;display:flex;flex-direction:column;gap:2px}
+      .dzk-lb-settings input{padding:4px 8px;border-radius:6px;border:1px solid rgba(255,255,255,.2);background:rgba(0,0,0,.45);color:#fff;font-size:11px;outline:none}
+      .dzk-lb-settings input:focus{border-color:rgba(0,220,255,.6)}
+      .dzk-lb-hint{font-size:9px;opacity:.5;line-height:1.5}
+      .dzk-lb-privacy-toggle{color:#51AFFF;cursor:pointer;text-decoration:underline}
+      .dzk-lb-privacy{max-height:104px;overflow-y:auto;font-size:9px;line-height:1.6;opacity:.72;padding:6px 8px;border-radius:6px;background:rgba(0,0,0,.45);border:1px solid rgba(255,255,255,.12);scrollbar-width:thin}
+      .dzk-lb-actions{display:flex;gap:8px}
+      .dzk-lb-actions button{flex:1;padding:5px 0;border-radius:6px;border:none;font-size:11px;font-weight:700;cursor:pointer;color:#fff}
+      .dzk-lb-save{background:linear-gradient(135deg,#00dcff,#5143ff)}
+      .dzk-lb-close{background:rgba(255,255,255,.12)}
+      .dzk-level-top .dzk-stats-card{gap:6px;padding:9px 12px}
+      /* ===== 移动端适配（≤880px：三列面板纵向堆叠、参数行收窄，修复窄屏溢出/重叠） ===== */
+      @media(max-width:880px){
+        .dzk-level-card{max-width:94vw;max-height:calc(100vh - 20px);max-height:calc(100dvh - 20px);padding:16px 14px 14px;border-radius:14px}
+        .dzk-level-card h2{font-size:20px}
+        .dzk-level-card .dzk-close{top:8px;right:10px;font-size:20px}
+        /* 顶部三卡：竖向堆叠，高度自适应（覆盖三列定高布局） */
+        .dzk-level-top{flex-direction:column;height:auto;gap:10px;margin-bottom:12px}
+        .dzk-level-top > *{flex:0 0 auto;width:auto}
+        /* 无尽卡恢复横排：标题+层数居左，按钮居右；窄屏收起 4 行说明 */
+        .dzk-level-top .dzk-endless-card{flex-direction:row;align-items:center;justify-content:space-between;gap:12px;padding:10px 14px}
+        .dzk-level-top .dzk-endless-desc{display:none}
+        .dzk-level-top .dzk-endless-floor{margin-top:0;font-size:11px}
+        .dzk-level-top .dzk-endless-btn{margin-top:0;width:auto;padding:8px 18px}
+        /* 排行榜卡：列表给固定可视高度 */
+        .dzk-lb-card{min-height:158px}
+        .dzk-lb-row{font-size:10px}
+        /* 数据卡两个 section 正常纵排 */
+        .dzk-level-top .dzk-stats-card{gap:8px;padding:10px 12px}
+        /* 关卡按钮固定 2 列 */
+        .dzk-level-list{grid-template-columns:repeat(2,1fr)}
+        .dzk-level-btn{min-height:64px;padding:8px 6px}
+        .dzk-level-name{font-size:14px}
+        /* 设置页单列 + 参数行收窄 */
+        .dzk-settings-grid{grid-template-columns:1fr}
+        .dzk-settings-col{padding:12px}
+        .dzk-settings-hint{max-width:46vw;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+        .dzk-opt-row{gap:8px;margin:9px 0}
+        .dzk-opt-row label{flex:0 0 62px;font-size:11px}
+        .dzk-opt-val{flex:0 0 44px;font-size:11px}
+        .dzk-bonus-name{flex:0 0 62px;font-size:11px}
+        .dzk-bonus-weight-val{flex:0 0 40px}
+        .dzk-param-tip{font-size:10px}
+        .dzk-tabs{margin:10px 0 12px}
+        .dzk-tab{padding:8px 0;font-size:12px}
+      }
+      /* 手机端游戏内：主页/刷新按钮下移到顶部生命值/分数 HUD 条(约57px高)以下，避免重叠。
+         dzk-in-game 由 records_v17 的轮询根据 .page.page-game 是否存在打/摘 */
+      @media(max-width:767px){
+        html.dzk-in-game .dzk-home-btn{transform:translateY(52px)}
+      }
+      /* 手机端结算卡：取消原版 ≤699px 的全屏拉伸(min-height:inner-height)，
+         恢复紧凑居中卡片，避免"标题分数悬在半空、按钮沉底"的稀疏布局 */
+      @media(max-width:699px){
+        .page.page-results{position:fixed !important;top:0;right:0;bottom:0;left:0;min-height:0;display:flex !important;align-items:center !important;justify-content:center !important;padding:0 12px}
+        .popin{min-height:0 !important;max-height:92vh;overflow-y:auto}
+      }
+      /* 手机端弹窗触摸滚动:引擎全局 touchmove passive:false 注册会吞掉弹窗滚动,
+         data-bypass-touch 豁免 preventDefault 后,再显式允许纵向手势 */
+      .dzk-level-card, .dzk-records-card{touch-action:pan-y}
+      .dzk-level-card input[type=range], .dzk-settings-col input[type=range]{touch-action:none}
+      /* 本地存储不可用告警条 + 设置页存储状态行 */
+      .dzk-storage-warn{position:fixed;left:50%;bottom:18px;transform:translateX(-50%);z-index:2147483647;display:flex;align-items:center;gap:12px;max-width:92vw;padding:10px 16px;border-radius:12px;background:rgba(40,10,30,.94);border:1px solid rgba(255,80,110,.55);box-shadow:0 8px 30px rgba(0,0,0,.5);color:#FFD9E2;font-family:"Exo2",Arial,Helvetica,sans-serif;font-size:12px;line-height:1.5}
+      .dzk-storage-warn b{color:#FF8AA6}
+      .dzk-storage-warn button{flex-shrink:0;width:22px;height:22px;border:none;border-radius:6px;background:rgba(255,255,255,.12);color:#fff;cursor:pointer}
+      .dzk-storage-line{margin:10px 0 0;font-size:11px;opacity:.6;text-align:center}
+      .dzk-storage-line span{opacity:.75}
+
+    </style>
+    </head>
+
+    <body>
+        <svg style="display: none;" aria-hidden="true" class="icons-spritesheet">
+            <symbol id="ALL_Stroke" width="254" height="111" viewBox="0 0 254 111">
+                <path fill-rule="evenodd" clip-rule="evenodd" d="M36.3067 5.82371C36.6169 4.6863 37.2373 3.80739 38.1679 3.18699C39.0985 2.46318 40.1842 2.10127 41.425 2.10127H55.6943C56.9351 2.10127 58.0209 2.46318 58.9515 3.18699C59.8821 3.80739 60.5025 4.6863 60.8127 5.82371L95.2451 109.121H81.1309L70.5358 75.6192H26.5835L15.9884 109.121H1.87424L36.3067 5.82371ZM53.3678 21.3338C52.9542 19.8862 52.4889 18.4386 51.9719 16.991C51.5583 15.44 51.1447 13.9924 50.7311 12.6482H46.3883C45.9747 13.9924 45.5611 15.44 45.1475 16.991C44.7339 18.4386 44.2686 19.8862 43.7515 21.3338L30.3115 63.8315H66.8079L53.3678 21.3338ZM65.2956 62.7237L52.3068 21.6531L52.3026 21.6382C51.8957 20.214 51.4377 18.7892 50.9286 17.3636L50.9132 17.3206L50.9014 17.2764C50.5703 16.0345 50.2395 14.8611 49.9093 13.756H47.21C46.8798 14.8611 46.5491 16.0345 46.2179 17.2764L46.2154 17.2859L46.2127 17.2953C45.7942 18.76 45.3239 20.224 44.8017 21.6872L31.8238 62.7237H65.2956ZM27.3951 76.7271L16.8 110.229H0.337158L35.2464 5.50129C35.6222 4.1487 36.3812 3.05812 37.5196 2.28785C38.6483 1.42102 39.9655 0.993408 41.425 0.993408H55.6943C57.1539 0.993408 58.4711 1.42104 59.5998 2.28789C60.7382 3.05813 61.4972 4.14867 61.873 5.50121L96.7822 110.229H80.3193L69.7242 76.7271H27.3951ZM124.592 0.993408V87.4069C124.592 90.7648 125.383 93.0033 126.738 94.3667C128.213 95.748 130.524 96.5357 133.876 96.5357H173.541L174.287 109.212L173.202 109.295C166.457 109.814 159.558 110.125 152.505 110.229C145.572 110.332 138.638 110.384 131.705 110.384C123.702 110.384 117.729 108.439 114.116 104.262C110.608 100.206 108.883 95.1287 108.883 89.113V0.993408H124.592ZM152.488 109.121C159.52 109.018 166.396 108.707 173.117 108.19L172.496 97.6436H133.876C130.361 97.6436 127.724 96.8164 125.966 95.162C124.312 93.5075 123.484 90.9225 123.484 87.4069V2.10127H109.991V89.113C109.991 94.9035 111.645 99.7116 114.954 103.537C118.263 107.363 123.846 109.276 131.705 109.276C138.633 109.276 145.561 109.224 152.488 109.121ZM204.263 0.993408V87.4069C204.263 90.7649 205.054 93.0034 206.409 94.3668C207.885 95.748 210.196 96.5357 213.547 96.5357H253.212L253.958 109.212L252.873 109.295C246.128 109.814 239.229 110.125 232.176 110.229C225.243 110.332 218.309 110.384 211.376 110.384C203.373 110.384 197.4 108.439 193.787 104.262C190.279 100.206 188.554 95.1287 188.554 89.113V0.993408H204.263ZM232.159 109.121C239.191 109.018 246.067 108.707 252.788 108.19L252.167 97.6436H213.547C210.032 97.6436 207.395 96.8164 205.637 95.162C203.983 93.5075 203.156 90.9225 203.156 87.4069V2.10127H189.662V89.113C189.662 94.9035 191.316 99.7116 194.625 103.537C197.934 107.363 203.517 109.276 211.376 109.276C218.304 109.276 225.232 109.224 232.159 109.121Z" fill="url(#gradient)">
+                </path>
+                <defs>
+                    <linearGradient id="gradient" x1="-52.5929" y1="-206.972" x2="373.981" y2="-78.581" gradientUnits="userSpaceOnUse">
+                        <stop stop-color="#FA00FF">
+                        </stop>
+                        <stop offset="1" stop-color="#51AFFF">
+                        </stop>
+                    </linearGradient>
+                </defs>
+            </symbol>
+            <symbol id="IT_Stroke" width="73" height="49" viewBox="0 0 73 49">
+                <g opacity="0.5" filter="url(#filter0_d_2747_5751)">
+                    <path fill-rule="evenodd" clip-rule="evenodd" d="M20.1548 8.34595V41.216H7.90796V8.34595H20.1548ZM9.06332 9.50131V40.0606H18.9994V9.50131H9.06332ZM41.6982 18.1665V40.0606H51.6921V18.1665H63.9389V9.50131H29.4514V18.1665H41.6982ZM28.296 8.34595H65.0942V19.3219H52.8474V41.216H40.5428V19.3219H28.296V8.34595Z" fill="url(#it_gradient)">
+                    </path>
+                </g>
+                <defs>
+                    <filter id="filter0_d_2747_5751" x="0.228058" y="0.666046" width="72.5461" height="48.2299" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+                        <feFlood flood-opacity="0" result="BackgroundImageFix">
+                        </feFlood>
+                        <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha">
+                        </feColorMatrix>
+                        <feOffset>
+                        </feOffset>
+                        <feGaussianBlur stdDeviation="3.83995">
+                        </feGaussianBlur>
+                        <feComposite in2="hardAlpha" operator="out">
+                        </feComposite>
+                        <feColorMatrix type="matrix" values="0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0.25 0">
+                        </feColorMatrix>
+                        <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_2747_5751">
+                        </feBlend>
+                        <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_2747_5751" result="shape">
+                        </feBlend>
+                    </filter>
+                    <linearGradient id="it_gradient" x1="4.50606" y1="41.2812" x2="68.4386" y2="39.0257" gradientUnits="userSpaceOnUse">
+                        <stop stop-color="#FE0291">
+                        </stop>
+                        <stop offset="0.317708" stop-color="#B762FF">
+                        </stop>
+                        <stop offset="0.557292" stop-color="#5143FF">
+                        </stop>
+                        <stop offset="0.770833" stop-color="#005CFF">
+                        </stop>
+                        <stop offset="1" stop-color="#8FD7FF">
+                        </stop>
+                    </linearGradient>
+                </defs>
+            </symbol>
+            <symbol id="IT_Text" x="0px" y="0px" viewBox="0 0 64 43">
+                <g>
+                    <path class="st0" d="M18.1,36V7.5H7.5V36H18.1z M35.8,17v19h10.7V17H57V7.5H25.2V17H35.8z">
+                    </path>
+                </g>
+            </symbol>
+            <symbol id="I_WANT_Stroke" width="499" height="111" viewBox="0 0 499 111">
+                <path fill-rule="evenodd" clip-rule="evenodd" d="M16.5743 0.808838V110.044H0.709717V0.808838H16.5743ZM205.075 0.808838L183.073 105.164L183.064 105.195C182.694 106.552 181.952 107.717 180.87 108.679L180.843 108.703L180.814 108.725C179.648 109.632 178.203 110.044 176.567 110.044H161.057C159.501 110.044 158.087 109.621 156.854 108.758L156.801 108.722L156.753 108.679C155.637 107.687 154.946 106.432 154.694 104.954L137.946 24.4685C137.533 22.404 137.12 20.3913 136.707 18.4306L136.705 18.4196C136.354 16.6626 136.002 14.9431 135.651 13.2613H134.193C133.844 14.9347 133.494 16.6454 133.144 18.3932C132.832 20.4715 132.468 22.4994 132.052 24.4768L132.051 24.4795L115.452 104.995L115.446 105.017C115.075 106.502 114.263 107.743 113.047 108.716L113.041 108.721L113.035 108.725C111.883 109.621 110.497 110.044 108.943 110.044H93.2776C91.7217 110.044 90.3075 109.621 89.0749 108.758L89.0223 108.722L88.9742 108.679C87.8779 107.704 87.1741 106.511 86.917 105.118L64.9242 0.808838H81.6219L98.5494 85.1329L98.5506 85.1384C98.9697 87.1298 99.3353 89.273 99.6482 91.5671C99.9165 93.4447 100.224 95.4013 100.57 97.4369H102.273C102.634 95.3842 102.995 93.4095 103.357 91.513C103.771 89.3384 104.185 87.2153 104.599 85.1438L104.601 85.1332L121.191 6.21531C121.438 4.65487 122.117 3.33763 123.252 2.32949L123.273 2.31038L123.296 2.29242C124.529 1.30549 125.963 0.808838 127.555 0.808838H142.445C144.037 0.808838 145.443 1.30703 146.593 2.32949C147.714 3.32576 148.442 4.62269 148.798 6.16553L148.8 6.17611L165.394 85.1156C165.395 85.1187 165.396 85.1218 165.396 85.1248C165.917 87.4151 166.334 89.6562 166.648 91.8482C167.002 93.7106 167.281 95.5735 167.485 97.4369H169.402L170.196 91.8808L170.196 91.8774C170.509 89.5831 170.875 87.3902 171.293 85.299L171.293 85.2966L188.379 0.808838H205.075ZM171.293 92.0305L170.363 98.5447H166.485C166.279 96.3733 165.968 94.2019 165.555 92.0305C165.244 89.8591 164.831 87.6359 164.314 85.3611L147.718 6.41464C147.408 5.07043 146.787 3.98472 145.857 3.15751C144.926 2.33031 143.789 1.9167 142.445 1.9167H127.555C126.211 1.9167 125.022 2.33031 123.988 3.15751C123.057 3.98472 122.488 5.07043 122.281 6.41464L105.686 85.3611C105.272 87.4291 104.858 89.5489 104.445 91.7203C104.031 93.8917 103.618 96.1665 103.204 98.5447H99.6367C99.2231 96.1665 98.8612 93.8917 98.551 91.7203C98.2408 89.4454 97.8789 87.3257 97.4653 85.3611L80.7144 1.9167H66.29L88.0041 104.904C88.2109 106.041 88.7796 107.024 89.7102 107.851C90.7442 108.575 91.9334 108.936 93.2776 108.936H108.943C110.287 108.936 111.424 108.575 112.355 107.851C113.389 107.024 114.061 105.99 114.371 104.749L130.967 24.2513C131.381 22.2867 131.743 20.2703 132.053 18.2023C132.466 16.1343 132.88 14.118 133.294 12.1534H136.551C136.964 14.118 137.378 16.1343 137.792 18.2023C138.205 20.1669 138.619 22.1833 139.032 24.2513L155.783 104.749C155.99 105.99 156.559 107.024 157.489 107.851C158.523 108.575 159.713 108.936 161.057 108.936H176.567C178.014 108.936 179.204 108.575 180.134 107.851C181.065 107.024 181.685 106.041 181.995 104.904L203.71 1.9167H189.285L172.379 85.5162C171.966 87.5842 171.604 89.7557 171.293 92.0305ZM241.055 5.63914C241.365 4.50173 241.986 3.62282 242.916 3.00241C243.847 2.27861 244.933 1.9167 246.173 1.9167H260.443C261.683 1.9167 262.769 2.27861 263.7 3.00241C264.63 3.62282 265.251 4.50173 265.561 5.63914L299.993 108.936H285.879L275.284 75.4346H231.332L220.737 108.936H206.623L241.055 5.63914ZM258.116 21.1492C257.703 19.7016 257.237 18.254 256.72 16.8064C256.307 15.2554 255.893 13.8078 255.479 12.4636H251.137C250.723 13.8078 250.309 15.2554 249.896 16.8064C249.482 18.254 249.017 19.7016 248.5 21.1492L235.06 63.647H271.556L258.116 21.1492ZM270.044 62.5391L257.055 21.4685L257.051 21.4536C256.644 20.0294 256.186 18.6046 255.677 17.179L255.662 17.136L255.65 17.0919C255.319 15.8499 254.988 14.6765 254.658 13.5714H251.958C251.628 14.6765 251.297 15.8499 250.966 17.0919L250.964 17.1013L250.961 17.1108C250.543 18.5755 250.072 20.0395 249.55 21.5028L236.572 62.5391H270.044ZM232.143 76.5425L221.548 110.044H205.085L239.995 5.31652C240.371 3.964 241.13 2.87349 242.268 2.10326C243.397 1.23644 244.714 0.808838 246.173 0.808838H260.443C261.902 0.808838 263.219 1.23648 264.348 2.10336C265.487 2.87363 266.246 3.9642 266.621 5.31678L301.531 110.044H285.068L274.473 76.5425H232.143ZM398.516 0.808838V103.508C398.516 105.48 398.037 107.165 396.884 108.351C395.726 109.544 394.071 110.044 392.134 110.044H378.796C377.076 110.044 375.572 109.642 374.393 108.725C373.278 107.858 372.407 106.605 371.737 105.051L335.608 29.2258L335.603 29.2148L335.598 29.2038C334.672 27.146 333.59 24.8279 332.352 22.2491C331.24 19.9322 330.366 17.7628 329.734 15.7429H329.286C329.443 17.6493 329.564 19.5905 329.65 21.5664C329.754 23.9607 329.806 26.3549 329.806 28.7492V110.044H313.941V7.34525C313.941 5.36496 314.437 3.67626 315.623 2.49046C316.809 1.30466 318.497 0.808838 320.478 0.808838H333.351C335.071 0.808838 336.575 1.21112 337.754 2.12792C338.869 2.99542 339.741 4.24856 340.41 5.8038L375.445 79.7486C376.589 81.9345 377.782 84.4238 379.022 87.2144C380.26 89.6905 381.411 92.1674 382.475 94.645H383.23C383.14 92.2499 383.051 89.8933 382.962 87.5751C382.858 84.8725 382.806 82.1699 382.806 79.4673V0.808838H398.516ZM384.338 94.645C384.352 95.0134 384.366 95.3827 384.379 95.7529H381.743C380.605 93.0645 379.364 90.3761 378.02 87.6876C376.779 84.8958 375.59 82.4142 374.453 80.2428L339.4 6.25953C338.78 4.81192 338.004 3.72622 337.074 3.00241C336.143 2.27861 334.902 1.9167 333.351 1.9167H320.478C316.859 1.9167 315.049 3.72622 315.049 7.34525V108.936H328.698V28.7492C328.698 26.371 328.646 23.9928 328.543 21.6146C328.456 19.621 328.333 17.6638 328.174 15.7429C328.143 15.3722 328.111 15.0029 328.078 14.635H330.559C331.18 16.8064 332.11 19.1846 333.351 21.7697C334.592 24.3547 335.678 26.6812 336.608 28.7492L372.747 104.594C373.367 106.041 374.143 107.127 375.073 107.851C376.004 108.575 377.245 108.936 378.796 108.936H392.134C395.65 108.936 397.408 107.127 397.408 103.508V1.9167H383.914V79.4673C383.914 82.1557 383.966 84.8441 384.069 87.5325C384.159 89.8645 384.249 92.2353 384.338 94.645ZM414.636 1.9167V14.0146H449.069V108.936H462.718V14.0146H497.305V1.9167H414.636ZM463.825 15.1225V110.044H447.961V15.1225H413.528V0.808838H498.413V15.1225H463.825ZM15.4665 1.9167H1.81758V108.936H15.4665V1.9167Z" fill="url(#paint0_linear_24_287)">
+                </path>
+                <defs>
+                    <linearGradient id="paint0_linear_24_287" x1="-117.715" y1="-207.157" x2="565.865" y2="205.138" gradientUnits="userSpaceOnUse">
+                        <stop stop-color="#FA00FF">
+                        </stop>
+                        <stop offset="1" stop-color="#51AFFF">
+                        </stop>
+                    </linearGradient>
+                </defs>
+            </symbol>
+            <symbol id="arrow-rotate" class="raw" width="53" height="16" viewBox="0 0 53 16" fill="none">
+                <path d="M2.14 13.922c.421 0 .842-.126 1.214-.388C10.193 8.691 18.26 6.132 26.68 6.132c8.228 0 16.144 2.455 22.895 7.101a2.096 2.096 0 0 0 2.919-.54 2.099 2.099 0 0 0-.541-2.92c-7.451-5.128-16.192-7.84-25.274-7.84C17.386 1.934 8.48 4.76.92 10.113a2.095 2.095 0 0 0-.497 2.925c.41.579 1.055.885 1.717.885Z" fill="#F2676F">
+                </path>
+                <path d="M11.725 15.78c.984 0 1.864-.694 2.061-1.7a2.101 2.101 0 0 0-1.662-2.46L2.541 9.76a2.097 2.097 0 0 0-2.46 1.662 2.101 2.101 0 0 0 1.662 2.46l9.583 1.859c.131.027.268.038.4.038h-.001Z" fill="#F2676F">
+                </path>
+                <path d="M2.142 13.923a2.1 2.1 0 0 0 2.044-1.624l2.165-9.304A2.096 2.096 0 0 0 4.782.475a2.092 2.092 0 0 0-2.52 1.569L.097 11.348a2.096 2.096 0 0 0 2.045 2.575Z" fill="#F2676F">
+                </path>
+            </symbol>
+            <symbol id="bonus-battle-ready" viewBox="0 0 140 131">
+                <path d="M63 28.2a36.1 36.1 0 0 1 14.6 0c1.8.4 2.9 2.1 2.6 4-.4 1.8-2.1 3-3.9 2.7a30.8 30.8 0 0 0-12.1 0c-1.8.4-3.5-.8-3.9-2.7-.2-1.9.9-3.7 2.7-4zm-9 6.6c1 1.5.6 3.6-.9 4.7a32.4 32.4 0 0 0-8.6 8.7c-1 1.5-3.1 2-4.6.9a3.5 3.5 0 0 1-.9-4.7c2.7-4.2 6.3-7.8 10.4-10.6 1.6-.9 3.6-.5 4.6 1zm32.7 0c1-1.5 3.1-2 4.6-.9 4.1 2.8 7.6 6.4 10.4 10.6 1 1.5.6 3.6-.9 4.7-1.5 1-3.6.6-4.6-.9a32.4 32.4 0 0 0-8.6-8.7 3.4 3.4 0 0 1-.9-4.8zm16.6 20.9c1.8-.4 3.5.8 3.9 2.7a38 38 0 0 1 0 15c-.4 1.8-2.1 3-3.9 2.7a3.4 3.4 0 0 1-2.6-4 31.8 31.8 0 0 0 0-12.4c-.3-1.9.8-3.7 2.6-4zm-65.9 0c1.8.4 2.9 2.1 2.6 4a31.8 31.8 0 0 0 0 12.4c.4 1.8-.8 3.6-2.6 4-1.8.4-3.5-.8-3.9-2.7a38 38 0 0 1 0-15c.4-1.9 2.1-3.1 3.9-2.7zM40 82.5c1.5-1 3.6-.6 4.6.9 2.3 3.4 5.2 6.4 8.6 8.7 1.5 1 1.9 3.1.9 4.7-1 1.5-3.1 2-4.6.9a38.9 38.9 0 0 1-10.4-10.6c-1-1.5-.6-3.6.9-4.6zm60.7 0c1.5 1 1.9 3.1.9 4.7a36.2 36.2 0 0 1-10.4 10.6c-1.5 1-3.5.6-4.5-.8l-.1-.1c-1-1.5-.6-3.6.9-4.7 3.4-2.3 6.3-5.3 8.6-8.7 1-1.6 3.1-2.1 4.6-1zm-40.3 17c.4-1.8 2.1-3 3.9-2.7a30.5 30.5 0 0 0 12 0c1.8-.4 3.5.8 3.9 2.7.4 1.8-.8 3.6-2.6 4a35.4 35.4 0 0 1-14.6 0 3.5 3.5 0 0 1-2.6-4zm25.8-33.7A16 16 0 0 1 70.4 82a16 16 0 0 1-15.8-16.2 16 16 0 0 1 15.8-16.2 16 16 0 0 1 15.8 16.2z">
+                </path>
+                <path d="M70.3 51.7c-7.6 0-13.8 6.3-13.8 14.1s6.2 14.1 13.8 14.1a14 14 0 0 0 13.8-14.1c.1-7.8-6.1-14.1-13.8-14.1zM52.6 65.8c0-10 8-18.2 17.8-18.2s17.8 8.1 17.8 18.2c0 10-8 18.2-17.8 18.2a18 18 0 0 1-17.8-18.2z">
+                </path>
+            </symbol>
+            <symbol id="bonus-future-shield" viewBox="0 0 140 131">
+                <path d="M35.5 40c0 .5-4 52.7 34.6 69a.9.9 0 0 0 .7 0c39-17 34.6-68.6 34.5-69a1 1 0 0 0-.8-1 100.8 100.8 0 0 1-33.6-11 .9.9 0 0 0-.9 0c-.2.1-17 9.4-33.6 11a1 1 0 0 0-.9 1Z">
+                </path>
+            </symbol>
+            <symbol id="bonus-outline" viewBox="0 0 140 131">
+                <path d="m136.4 52.5-22.1-39.1A25.5 25.5 0 0 0 92.1.3H48c-9.1 0-17.6 5-22.2 13.1l-22 39.1c-4.6 8.1-4.6 18 0 26.2l22.1 39.1c4.6 8.1 13 13.1 22.2 13.1h44.2c9.1 0 17.6-5 22.2-13.1l22.1-39.1a27.1 27.1 0 0 0-.2-26.2zm-5.3 23L109 114.6a19.3 19.3 0 0 1-16.8 9.9H48c-7 0-13.4-3.8-16.8-9.9L9.1 75.5a20.2 20.2 0 0 1 0-19.9l22.1-39.1c3.5-6.2 9.9-9.9 16.8-9.9h44.2c7 0 13.4 3.8 16.8 9.9l22.1 39.1a20.2 20.2 0 0 1 0 19.9z" fill-rule="evenodd" clip-rule="evenodd">
+                </path>
+            </symbol>
+            <symbol id="bonus-personalization" viewBox="0 0 140 131">
+                <path d="M49.2 98c-3 0-5.7-1.2-7.9-3.3a11.8 11.8 0 0 1 0-16L59.5 60a21.3 21.3 0 0 1 29-24.6c.7.4 1.3 1 1.4 1.9.1.8-.1 1.6-.7 2.2L80 49l1.3 4.8 4.6 1.2 9.2-9.4a3 3 0 0 1 2.2-.7c.8.2 1.5.7 1.8 1.4a22 22 0 0 1-4.3 24A20.6 20.6 0 0 1 75 76L57 94.6c-2 2.2-4.8 3.3-7.7 3.3Z">
+                </path>
+            </symbol>
+            <symbol id="bonus-power" viewBox="0 0 140 131">
+                <path d="m91 58.6-14.8-4.2L84 25.9c.4-1.7-.4-3.5-2-4.3a3.6 3.6 0 0 0-4.4 1.1L47.9 64c-.7 1-1 2.3-.5 3.4.3 1.2 1.3 2 2.4 2.4L64.6 74l-8.7 31.7c-.5 1.7.3 3.6 2 4.3.4.3 1 .4 1.5.4a4 4 0 0 0 3-1.6l30.5-44.5c.7-1 .9-2.2.5-3.4-.4-1.1-1.3-2-2.5-2.3Z">
+                </path>
+            </symbol>
+            <symbol id="bonus-scale" viewBox="0 0 140 131">
+                <path d="M41.3 40.1v6c0 1.7-1.3 3.1-3 3.1s-3-1.4-3-3.1V32.6a3 3 0 0 1 3-3.2h13.2a3 3 0 0 1 3 3.2 3 3 0 0 1-3 3h-5.8l22.1 22.8a3.2 3.2 0 0 1 0 4.4 3 3 0 0 1-4.3 0L41.3 40ZM74 69a3 3 0 0 1 4.3 0l22.2 22.7v-6a3 3 0 0 1 3-3.1 3 3 0 0 1 3 3.1v13.5a3 3 0 0 1-3 3.2H90.2a3 3 0 0 1-3-3.2 3 3 0 0 1 3-3.1h5.9L73.9 73.4a3.2 3.2 0 0 1 0-4.4Z">
+                </path>
+            </symbol>
+            <symbol id="bonus-simultaneity" viewBox="0 0 140 131">
+                <path d="M79.6 35.4a9.6 9.6 0 0 0 2.7-6.7c0-5.3-4.2-9.5-9.3-9.5-2.5 0-4.9 1-6.5 2.8a9.6 9.6 0 0 0-2.7 6.7c0 5.2 4.1 9.5 9.2 9.5 2.6 0 4.9-1.1 6.6-2.8ZM94.4 106c4-4 6.4-9.6 6.4-15.8A22 22 0 0 0 79 68a22 22 0 0 0-21.9 22.3A22 22 0 0 0 79 112.7c6 0 11.5-2.5 15.4-6.6ZM58.2 65a15 15 0 0 0 4.2-10.5c0-8.2-6.5-14.9-14.5-14.9-4 0-7.7 1.7-10.3 4.4a15 15 0 0 0-4.3 10.5c0 8.2 6.5 15 14.6 15 4 0 7.6-1.8 10.3-4.5Z">
+                </path>
+            </symbol>
+            <symbol id="language-planet" viewBox="0 0 19 19">
+                <path fill-rule="evenodd" clip-rule="evenodd" d="M4.4894 2.63314C5.89439 1.60619 7.6264 1 9.5 1C12.7258 1 15.532 2.79698 16.972 5.44452C16.7285 5.75481 16.5614 6.11956 16.4861 6.50921L16.3303 7.31503C16.2613 7.6723 16.0647 7.9923 15.7772 8.2154L15.5025 8.4286C14.8922 8.9021 14.5351 9.6312 14.5351 10.4036V10.7081C14.5351 10.8926 14.4864 11.0739 14.3938 11.2335L13.6005 12.6015C13.3603 13.0156 12.7322 12.8921 12.6668 12.418C12.6548 12.3313 12.6353 12.2459 12.6085 12.1626L12.0883 10.5479C11.8699 9.8702 11.373 9.3178 10.7221 9.0292L9.221 8.3635C9.0636 8.2938 8.9622 8.1378 8.9622 7.9656V7.9507C8.9622 7.7739 9.0743 7.6166 9.2414 7.559C9.8118 7.36229 10.1946 6.82536 10.1946 6.22198V6.09324C10.1946 5.08245 9.2663 4.32661 8.2765 4.53143L8.2001 4.54724C7.6154 4.66824 7.14079 5.0943 6.95767 5.66269L6.53022 6.98949C6.52895 6.99342 6.52768 6.99492 6.52688 6.99578C6.52566 6.99706 6.52358 6.99868 6.52059 6.99991C6.5176 7.00114 6.51499 7.00146 6.51322 7.0014C6.51205 7.00137 6.51008 7.00119 6.50642 6.9993C6.50082 6.9964 6.4973 6.99062 6.4973 6.98432V6.69191C6.4973 5.66878 5.29579 5.11828 4.52091 5.78639C4.38724 5.90164 4.18133 5.79492 4.19845 5.61926L4.4894 2.63314ZM3.3915 3.5893C1.91105 5.11898 1 7.2031 1 9.5C1 10.514 1.17757 11.4866 1.50332 12.3883L1.73397 11.9671C1.79743 11.8512 1.84529 11.7274 1.87632 11.599L2.14222 10.4985C2.22871 10.1406 2.46627 9.8378 2.79334 9.6686C3.29183 9.4107 3.90046 9.5105 4.2905 9.914L4.80826 10.4497C4.9444 10.5906 5.11981 10.6871 5.31164 10.7268L5.91508 10.8517C6.74306 11.023 7.23935 11.8749 6.98007 12.6797C6.88399 12.9779 6.69208 13.236 6.43417 13.4139L6.14234 13.6152C5.81692 13.8397 5.59607 14.1862 5.52998 14.5759L5.15197 16.8053C6.4241 17.5641 7.9111 18 9.5 18C14.1944 18 18 14.1944 18 9.5C18 8.4805 17.8205 7.5028 17.4914 6.59701C17.4824 6.63065 17.4746 6.66466 17.4679 6.699L17.3121 7.5048C17.197 8.1003 16.8694 8.6336 16.3902 9.0054L16.1155 9.2186C15.7494 9.5027 15.5351 9.9402 15.5351 10.4036V10.7081C15.5351 11.0688 15.4398 11.4231 15.2589 11.7351L14.4655 13.1032C13.7482 14.3402 11.8717 13.9713 11.6762 12.5547C11.6722 12.5257 11.6656 12.4971 11.6566 12.4693L11.1365 10.8546C11.0055 10.448 10.7073 10.1165 10.3168 9.9433L8.8156 9.2777C8.2967 9.0476 7.9622 8.5333 7.9622 7.9656V7.9507C7.9622 7.34732 8.345 6.81038 8.9154 6.61366C9.0825 6.55603 9.1946 6.39874 9.1946 6.22198V6.09324C9.1946 5.71622 8.8484 5.43428 8.4791 5.51068L8.4028 5.52649C8.1706 5.57453 7.9822 5.74368 7.9095 5.96934L7.48204 7.29613C7.28928 7.8945 6.60525 8.1763 6.04693 7.8875C5.70931 7.7128 5.4973 7.36444 5.4973 6.98432V6.69191C5.4973 6.5245 5.3007 6.43443 5.17391 6.54375C4.35698 7.24812 3.09856 6.59586 3.20316 5.52228L3.3915 3.5893ZM4.32013 17.4649C5.80998 18.4358 7.5891 19 9.5 19C14.7467 19 19 14.7467 19 9.5C19 4.25329 14.7467 0 9.5 0C4.25329 0 0 4.25329 0 9.5C0 12.7216 1.60359 15.5686 4.05609 17.2865L4.03406 17.4164L4.32013 17.4649ZM4.24366 16.1803L4.54405 14.4087C4.65527 13.7528 5.02692 13.1698 5.57454 12.792L5.86637 12.5907C5.94285 12.538 5.99976 12.4614 6.02825 12.373C6.10513 12.1344 5.95797 11.8818 5.71244 11.831L5.109 11.7061C4.72038 11.6257 4.36501 11.43 4.08921 11.1447L3.57145 10.609C3.48844 10.5231 3.35891 10.5019 3.25282 10.5567C3.18322 10.5928 3.13266 10.6572 3.11425 10.7334L2.84835 11.8338C2.79663 12.0479 2.71686 12.2542 2.6111 12.4473L2.01624 13.5338C2.57147 14.5617 3.33231 15.4623 4.24366 16.1803Z">
+                </path>
+            </symbol>
+            <symbol id="logo-msi" viewBox="0 0 336 85">
+                <path fill-rule="evenodd" clip-rule="evenodd" d="M305.001 84.3786L327.907 21.2437C316.414 21.3941 304.956 22.5426 293.663 24.6768L272.009 84.3786H305.001ZM301.09 4.19291L296.693 16.3163C307.987 14.1856 319.444 13.0364 330.937 12.8817L335.336 0.757131C323.842 0.907759 312.384 2.05733 301.09 4.19291ZM181.659 69.3936C192.137 71.3013 202.765 72.259 213.416 72.2547H213.42C224.55 72.2547 232.627 69.7761 233.5 62.2191C233.925 58.6246 230.526 56.0366 224.295 52.6052C217.169 48.6718 211.176 46.7104 204.986 42.5696C202.044 40.8311 199.776 38.152 198.547 34.9652C197.317 31.7783 197.2 28.2702 198.213 25.0083C199.596 21.1118 201.808 17.5612 204.696 14.6014C207.584 11.6415 211.08 9.34288 214.942 7.86332C225.065 2.70076 233.079 0.757131 252.601 0.757131C264.666 0.755336 276.704 1.90581 288.55 4.19291L284.358 15.7363C273.879 13.8321 263.251 12.8768 252.601 12.8817C241.466 12.8817 233.385 15.3641 232.512 22.9155C232.097 26.5182 235.487 29.1105 241.725 32.5374C248.847 36.4645 254.844 38.4256 261.034 42.5696C263.977 44.3074 266.247 46.9871 267.477 50.1748C268.707 53.3624 268.825 56.8715 267.811 60.1344C266.422 64.0287 264.207 67.5766 261.318 70.5351C258.429 73.4937 254.934 75.7927 251.072 77.2747C240.953 82.4398 232.935 84.3786 213.42 84.3786H213.416C201.352 84.3816 189.316 83.2298 177.473 80.9389L181.659 69.3936ZM131.923 84.3786L151.032 31.6988C157.407 14.1354 134.019 20.5555 128.795 24.5907C122.592 29.2922 117.663 35.47 114.458 42.5615L99.2902 84.3786H66.2968L85.403 31.6988C91.7714 14.1354 68.3936 20.5555 63.1658 24.5907C56.9575 29.2924 52.0263 35.4735 48.8222 42.5696L33.6613 84.3786H0.663574L30.9994 0.757131C34.7996 0.377452 38.6372 0.815752 42.2537 2.04261C45.8703 3.26946 49.1817 5.25626 51.9656 7.8695C53.6658 9.61711 54.8517 11.7992 55.3931 14.1761C60.2902 11.1182 65.4202 8.44942 70.7355 6.19464C78.9359 2.73107 87.7291 0.884754 96.6307 0.757131C100.429 0.377097 104.266 0.815313 107.881 2.04222C111.496 3.26913 114.806 5.25608 117.588 7.8695C119.294 9.61365 120.484 11.7968 121.024 14.1761C125.922 11.1175 131.052 8.44869 136.369 6.19464C144.567 2.73088 153.358 0.884544 162.257 0.757131C166.057 0.376949 169.895 0.814948 173.511 2.04183C177.127 3.26872 180.439 5.25586 183.222 7.8695C185.229 10.353 186.554 13.3159 187.068 16.4665C187.582 19.617 187.267 22.8471 186.154 25.8391L164.919 84.3786H131.923Z">
+                </path>
+            </symbol>
+            <symbol id="mobile" class="raw" width="93" height="55" viewBox="0 0 93 55" fill="none">
+                <path d="M83.821 54.363h-73.8c-5.057 0-9.173-4.111-9.173-9.174V9.224C.848 4.167 4.964.051 10.02.051h73.806C88.884.05 93 4.167 93 9.224v35.965c-.005 5.063-4.122 9.174-9.178 9.174Zm-73.8-50.109a4.979 4.979 0 0 0-4.975 4.975v35.965a4.979 4.979 0 0 0 4.975 4.975h73.806a4.979 4.979 0 0 0 4.975-4.975V9.23a4.979 4.979 0 0 0-4.975-4.975H10.021Z" fill="#fff">
+                </path>
+                <path d="M14.672 34.064c-3.778 0-6.856-3.077-6.856-6.855 0-3.777 3.073-6.85 6.856-6.85 3.777 0 6.855 3.073 6.855 6.85 0 3.778-3.078 6.855-6.855 6.855Zm0-9.512a2.658 2.658 0 0 0-2.657 2.652 2.66 2.66 0 0 0 2.657 2.656 2.66 2.66 0 0 0 2.656-2.656 2.658 2.658 0 0 0-2.656-2.652ZM82.005 31.724a2.1 2.1 0 0 1-2.099-2.1v-11.2a2.1 2.1 0 0 1 4.199 0v11.2a2.1 2.1 0 0 1-2.1 2.1ZM82.005 38.105a2.1 2.1 0 0 1-2.099-2.099v-.672a2.1 2.1 0 0 1 4.199 0v.672a2.1 2.1 0 0 1-2.1 2.1Z" fill="#fff">
+                </path>
+            </symbol>
+            <symbol id="prizes-button" width="40" height="38" viewBox="0 0 40 38">
+                <path d="M15.6612 13.0464C15.3758 12.753 14.9855 12.5849 14.5762 12.5793C14.1669 12.5736 13.7721 12.7307 13.4786 13.0161C13.1852 13.3015 13.0172 13.6918 13.0115 14.1011C13.0058 14.5104 13.1629 14.9053 13.4483 15.1987L16.995 18.6696L13.4483 22.1405C13.3063 22.2814 13.1935 22.4491 13.1166 22.6338C13.0396 22.8185 13 23.0166 13 23.2167C13 23.4167 13.0396 23.6149 13.1166 23.7996C13.1935 23.9843 13.3063 24.1519 13.4483 24.2928C13.5892 24.4349 13.7569 24.5476 13.9416 24.6246C14.1263 24.7015 14.3244 24.7411 14.5245 24.7411C14.7246 24.7411 14.9227 24.7015 15.1074 24.6246C15.2921 24.5476 15.4597 24.4349 15.6006 24.2928L20.1477 19.7457C20.2897 19.6048 20.4025 19.4372 20.4794 19.2525C20.5564 19.0678 20.596 18.8697 20.596 18.6696C20.596 18.4695 20.5564 18.2714 20.4794 18.0867C20.4025 17.902 20.2897 17.7344 20.1477 17.5935L15.6612 13.0464ZM28.5445 17.5935L23.9975 13.0464C23.7121 12.761 23.325 12.6007 22.9213 12.6007C22.5177 12.6007 22.1306 12.761 21.8452 13.0464C21.5598 13.3318 21.3995 13.7189 21.3995 14.1226C21.3995 14.5262 21.5598 14.9133 21.8452 15.1987L25.3313 18.6696L21.8452 22.1405C21.7032 22.2814 21.5904 22.4491 21.5134 22.6338C21.4365 22.8185 21.3969 23.0166 21.3969 23.2167C21.3969 23.4167 21.4365 23.6149 21.5134 23.7996C21.5904 23.9843 21.7032 24.1519 21.8452 24.2928C21.9861 24.4349 22.1538 24.5476 22.3385 24.6246C22.5232 24.7015 22.7213 24.7411 22.9213 24.7411C23.1214 24.7411 23.3195 24.7015 23.5042 24.6246C23.6889 24.5476 23.8566 24.4349 23.9975 24.2928L28.5445 19.7457C28.6906 19.6089 28.8082 19.4444 28.8904 19.2619C28.9726 19.0794 29.0178 18.8824 29.0234 18.6823C29.0291 18.4821 28.995 18.2829 28.9232 18.096C28.8514 17.9091 28.7433 17.7383 28.6052 17.5935H28.5445Z" fill="url(#paint0_linear_2729_618)">
+                </path>
+                <rect x="0.5" y="37" width="35" height="39" rx="4.5" transform="rotate(-90 0.5 37)">
+                </rect>
+                <rect x="0.5" y="36" width="35" height="39" rx="4.5" transform="rotate(-90 0.5 36)" stroke="url(#paint1_linear_2729_618)">
+                </rect>
+                <defs>
+                    <linearGradient id="paint0_linear_2729_618" x1="6.72392" y1="8.4527" x2="42.0613" y2="12.3246" gradientUnits="userSpaceOnUse">
+                        <stop stop-color="#FE0291">
+                        </stop>
+                        <stop offset="0.317708" stop-color="#B762FF">
+                        </stop>
+                        <stop offset="0.557292" stop-color="#5143FF">
+                        </stop>
+                        <stop offset="0.770833" stop-color="#005CFF">
+                        </stop>
+                        <stop offset="1" stop-color="#8FD7FF">
+                        </stop>
+                    </linearGradient>
+                    <linearGradient id="paint1_linear_2729_618" x1="-0.500003" y1="76.5" x2="41" y2="64" gradientUnits="userSpaceOnUse">
+                        <stop stop-color="#ECECEC">
+                        </stop>
+                        <stop offset="1" stop-color="#A0A0A0">
+                        </stop>
+                    </linearGradient>
+                </defs>
+            </symbol>
+            <symbol id="retry" width="32" height="28" viewBox="0 0 32 28">
+                <path d="M10.8427 2.26676C10.0632 2.75426 9.80293 3.76228 10.2574 4.57478C10.7449 5.38728 11.7847 5.61452 12.5972 5.12702C14.4494 3.98952 16.6597 3.43728 19.0325 3.66452C24.0381 4.15202 28.0031 8.2792 28.361 13.2852C28.7837 19.3624 23.9088 24.433 17.9278 24.3683C12.3697 24.3036 7.75498 19.7537 7.65715 14.1955V14.1308H10.1277C10.8424 14.1308 11.2982 13.3513 10.9072 12.733L6.7153 6.07049C6.35728 5.48523 5.51306 5.48523 5.15504 6.07049L0.994718 12.6998C0.604978 13.3168 1.05946 14.0976 1.7742 14.0976H4.27771C4.34245 21.9954 11.038 28.2998 19.0652 27.7145C25.7924 27.227 31.2196 21.7998 31.7071 15.0726C32.2923 7.01228 25.923 0.251953 17.9924 0.251953C15.3924 0.251953 12.923 0.999713 10.8424 2.26669L10.8427 2.26676Z">
+                </path>
+            </symbol>
+            <symbol id="specs" width="14" height="14" viewBox="0 0 14 14">
+                <path d="M9.05595 5.6447C8.91396 5.6447 8.77779 5.7011 8.67739 5.8015C8.57699 5.9019 8.52059 6.03807 8.52059 6.18006V10.0239C8.52059 10.1659 8.46419 10.3021 8.36379 10.4025C8.26339 10.5029 8.12722 10.5593 7.98523 10.5593H2.09631C1.95432 10.5593 1.81815 10.5029 1.71775 10.4025C1.61735 10.3021 1.56095 10.1659 1.56095 10.0239V4.13499C1.56095 3.99301 1.61735 3.85684 1.71775 3.75644C1.81815 3.65604 1.95432 3.59964 2.09631 3.59964H5.94017C6.08215 3.59964 6.21832 3.54323 6.31872 3.44283C6.41912 3.34243 6.47553 3.20626 6.47553 3.06428C6.47553 2.92229 6.41912 2.78612 6.31872 2.68572C6.21832 2.58533 6.08215 2.52892 5.94017 2.52892H2.09631C1.67035 2.52892 1.26184 2.69813 0.960642 2.99933C0.659445 3.30053 0.490234 3.70904 0.490234 4.13499V10.0239C0.490234 10.4499 0.659445 10.8584 0.960642 11.1596C1.26184 11.4608 1.67035 11.63 2.09631 11.63H7.98523C8.41119 11.63 8.8197 11.4608 9.1209 11.1596C9.42209 10.8584 9.5913 10.4499 9.5913 10.0239V6.18006C9.5913 6.03807 9.5349 5.9019 9.4345 5.8015C9.3341 5.7011 9.19793 5.6447 9.05595 5.6447ZM11.1545 1.25477C11.1002 1.12396 10.9963 1.02001 10.8655 0.96568C10.8011 0.938248 10.732 0.923697 10.662 0.922852H7.44987C7.30789 0.922852 7.17172 0.979255 7.07132 1.07965C6.97092 1.18005 6.91452 1.31622 6.91452 1.45821C6.91452 1.60019 6.97092 1.73636 7.07132 1.83676C7.17172 1.93716 7.30789 1.99357 7.44987 1.99357H9.37181L3.85763 7.50239C3.80745 7.55216 3.76762 7.61137 3.74044 7.67661C3.71327 7.74184 3.69927 7.81182 3.69927 7.88249C3.69927 7.95317 3.71327 8.02314 3.74044 8.08838C3.76762 8.15362 3.80745 8.21283 3.85763 8.2626C3.9074 8.31277 3.96661 8.3526 4.03185 8.37978C4.09709 8.40696 4.16706 8.42095 4.23773 8.42095C4.30841 8.42095 4.37838 8.40696 4.44362 8.37978C4.50886 8.3526 4.56807 8.31277 4.61784 8.2626L10.1267 2.74842V4.67035C10.1267 4.81234 10.1831 4.94851 10.2835 5.0489C10.3839 5.1493 10.52 5.20571 10.662 5.20571C10.804 5.20571 10.9402 5.1493 11.0406 5.0489C11.141 4.94851 11.1974 4.81234 11.1974 4.67035V1.45821C11.1965 1.38825 11.182 1.31913 11.1545 1.25477V1.25477Z" fill="url(#paint0_linear_3061_2353)">
+                </path>
+                <defs>
+                    <linearGradient id="paint0_linear_3061_2353" x1="-3.7034" y1="-2.70993" x2="20.0281" y2="-0.736369" gradientUnits="userSpaceOnUse">
+                        <stop stop-color="#FE0291">
+                        </stop>
+                        <stop offset="0.317708" stop-color="#B762FF">
+                        </stop>
+                        <stop offset="0.557292" stop-color="#5143FF">
+                        </stop>
+                        <stop offset="0.770833" stop-color="#005CFF">
+                        </stop>
+                        <stop offset="1" stop-color="#8FD7FF">
+                        </stop>
+                    </linearGradient>
+                </defs>
+            </symbol>
+            <symbol id="title-circle" viewBox="0 0 292 335">
+                <path fill-rule="evenodd" clip-rule="evenodd" d="M30.0844 28.8815C45.5402 18.9556 62.8562 11.3059 81.5689 6.54181C82.0539 6.41832 82.5391 6.29712 83.0242 6.1782C170.595 -15.2872 259.247 37.6905 281.199 123.917C281.447 124.888 281.684 125.86 281.913 126.831C287.381 150.096 287.447 173.433 282.901 195.532C270.688 254.901 225.194 305.343 161.754 321.495C122.198 331.565 81.6097 325.959 46.8987 308.866C32.1814 301.619 18.5208 292.307 6.44358 281.249C5.13142 280.048 3.83796 278.826 2.56386 277.584C2.50503 277.526 2.44625 277.469 2.3875 277.412L0.470215 279.493C13.1135 293.355 27.9691 304.939 44.3189 313.818C79.9814 333.183 122.753 339.679 165.181 328.877C230.601 312.222 277.073 259.058 288.364 196.704C292.5 173.867 291.916 149.797 285.816 125.837C285.569 124.866 285.313 123.899 285.05 122.937C261.085 35.2925 171.185 -17.3057 82.7758 5.20264C82.2908 5.32613 81.8068 5.45162 81.3238 5.57911C62.5257 10.5415 45.3162 18.5284 30.0844 28.8815Z">
+                </path>
+            </symbol>
+            <symbol id="title-rect" x="0px" y="0px" viewBox="0 0 399 103.7">
+                <path class="st0" d="M-0.1,19.7C-0.2,9.4,8.9,1,20,0.9l358.4-1.8c11.2-0.1,20.3,8.3,20.3,18.6l0,9.4c0.2,41.4-35.9,75.1-80.6,75.3 l-236.9,1.2C36.6,103.8,0.1,70.5-0.1,29.1L-0.1,19.7z">
+                </path>
+            </symbol>
+        </svg>
+        <aside id="preloader">
+            <div class="ball">
+            </div>
+            <div class="paddle">
+            </div>
+            <p class="preloader-counter">
+            </p>
+            <div class="logo">
+                <svg xmlns="http://www.w3.org/2000/svg">
+                    <path d="m67.02 18.677 5.02-13.835a43.476 43.476 0 0 0-7.504.753l-4.745 13.082h7.23Zm-.857-17.571L65.2 3.763a43.642 43.642 0 0 1 7.504-.753l.964-2.657c-2.519.033-5.03.285-7.505.753Zm-26.17 14.287c2.296.418 4.625.628 6.959.627 2.44 0 4.21-.543 4.4-2.2.094-.787-.65-1.354-2.016-2.106-1.562-.862-2.875-1.291-4.231-2.199a3.326 3.326 0 0 1-1.484-3.848 6.266 6.266 0 0 1 3.665-3.757C49.505.78 51.261.353 55.538.353c2.644 0 5.282.252 7.878.753l-.919 2.53a38.818 38.818 0 0 0-6.959-.626c-2.44 0-4.21.544-4.401 2.199-.091.789.651 1.357 2.018 2.108 1.56.86 2.875 1.29 4.231 2.198a3.326 3.326 0 0 1 1.485 3.85 6.281 6.281 0 0 1-3.668 3.755c-2.217 1.132-3.974 1.557-8.25 1.557h-.001a41.43 41.43 0 0 1-7.876-.754l.917-2.53Zm-10.898 3.284 4.187-11.544c1.397-3.848-3.728-2.442-4.872-1.557a10.225 10.225 0 0 0-3.142 3.937l-3.324 9.164h-7.23l4.187-11.544c1.396-3.848-3.727-2.442-4.872-1.557a10.215 10.215 0 0 0-3.143 3.94l-3.322 9.16H.333L6.98.354a5.862 5.862 0 0 1 4.595 1.559c.372.383.632.86.75 1.382a24.167 24.167 0 0 1 3.362-1.75 15.142 15.142 0 0 1 5.675-1.19 5.856 5.856 0 0 1 4.592 1.558c.374.382.634.86.753 1.382a24.127 24.127 0 0 1 3.362-1.75 15.133 15.133 0 0 1 5.673-1.19 5.86 5.86 0 0 1 4.594 1.558 4.03 4.03 0 0 1 .642 3.937l-4.653 12.828h-7.23Z"/>
+                </svg>
+            </div>
+            <figure class="preloader-background">
+            </figure>
+        </aside>
+        <div id="app" data-v-app="">
+            <main class="ui">
+                <header class="app-header visible" data-v-593a0a07="">
+                    <aside class="close__center" data-v-593a0a07="">
+                        <button class="close__center-button" aria-label="關閉" data-v-593a0a07="">
+                            <svg class="icon-close" width="22" height="23" viewBox="0 0 22 23" fill="black" xmlns="http://www.w3.org/2000/svg" data-v-593a0a07="">
+                                <rect x="21.2133" y="3.01465" width="27" height="3" rx="1.5" transform="rotate(135 21.2133 3.01465)">
+                                </rect>
+                                <rect x="19.0919" y="22.1069" width="27" height="3" rx="1.5" transform="rotate(-135 19.0919 22.1069)">
+                                </rect>
+                            </svg>
+                        </button>
+                    </aside>
+                    <button class="logo-wrapper visible logo" tabindex="0" data-v-593a0a07="">
+                        <svg class="icon icon-logo-msi icon icon" viewBox="0 0 336 85">
+                            <use href="#logo-msi">
+                            </use>
+                        </svg>
+                    </button>
+                    <div class="buttons" data-v-593a0a07="">
+                        <button class="sound-button default visible" type="button" aria-label="聲音" data-v-2645cb68="" data-v-593a0a07="">
+                            <div class="button-content active" data-v-2645cb68="">
+                                <canvas class="button-canvas" data-v-2645cb68="" width="41" height="41" style="width: 41px; height: 41.1094px;">
+                                </canvas>
+                            </div>
+                        </button>
+                        <button id="dzk-trophy-btn" class="dzk-trophy-btn" type="button" aria-label="歷史記錄" title="歷史最高分">
+                            <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M8 21h8"></path>
+                                <path d="M12 17v4"></path>
+                                <path d="M7 4h10v5a5 5 0 0 1-10 0V4z"></path>
+                                <path d="M17 5h3v2a3 3 0 0 1-3 3"></path>
+                                <path d="M7 5H4v2a3 3 0 0 0 3 3"></path>
+                            </svg>
+                        </button>
+                    </div>
+                </header>
+                <div class="cookie-consent cookie-consent-enter-active cookie-consent-enter-to">
+                    <div class="cookie-consent__inner">
+                        <p class="cookie-consent__description">使用 cookie 來優化網站功能並提供最佳體驗。 查看我們的<a target="_blank" rel="noreferrer noopener nofollow" href="https://tw.msi.com/page/privacy-policy">隱私政策</a>。</p>
+                        <div class="cookie-consent__buttons">
+                            <button class="cookie-consent__cta cookie-consent__cta--decline">
+                                <p class="cta__text">放棄</p>
+                            </button>
+                            <button class="cookie-consent__cta cookie-consent__cta--accept">
+                                <p class="cta__text">接受</p>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <aside class="transition-overlay" data-v-12372552="">
+                    <figure class="layer fill" data-v-12372552="">
+                    </figure>
+                    <figure class="layer gradient" data-v-12372552="">
+                    </figure>
+                    <figure class="overlay" data-v-12372552="">
+                    </figure>
+                </aside>
+                <section class="page page-home" data-v-0fdf75bd="" style="visibility: visible;">
+                    <div class="wrapper" data-v-0fdf75bd="">
+                        <div class="left" data-v-0fdf75bd="">
+                            <div class="title" data-v-0fdf75bd="">
+                                <div class="title-wrapper" data-v-7190abc7="" data-v-0fdf75bd="">
+                                    <div class="texts" data-v-7190abc7="" style="opacity: 1; transition: transform 1000ms cubic-bezier(0.19, 1, 0.22, 1);" data-csstween="11">
+                                        <div class="text out" data-v-7190abc7="">
+                                            <div data-v-7190abc7="" style="opacity: 1; transition: transform 1000ms cubic-bezier(0.19, 1, 0.22, 1);" data-csstween="12">
+                                                <span class="front" data-v-7190abc7="">I&nbsp;WANT</span>
+                                                <svg class="back back-iwant" width="499" height="111" viewBox="0 0 499 111" fill="none" xmlns="http://www.w3.org/2000/svg" data-v-7190abc7="">
+                                                    <path fill-rule="evenodd" clip-rule="evenodd" d="M16.5743 0.808838V110.044H0.709717V0.808838H16.5743ZM205.075 0.808838L183.073 105.164L183.064 105.195C182.694 106.552 181.952 107.717 180.87 108.679L180.843 108.703L180.814 108.725C179.648 109.632 178.203 110.044 176.567 110.044H161.057C159.501 110.044 158.087 109.621 156.854 108.758L156.801 108.722L156.753 108.679C155.637 107.687 154.946 106.432 154.694 104.954L137.946 24.4685C137.533 22.404 137.12 20.3913 136.707 18.4306L136.705 18.4196C136.354 16.6626 136.002 14.9431 135.651 13.2613H134.193C133.844 14.9347 133.494 16.6454 133.144 18.3932C132.832 20.4715 132.468 22.4994 132.052 24.4768L132.051 24.4795L115.452 104.995L115.446 105.017C115.075 106.502 114.263 107.743 113.047 108.716L113.041 108.721L113.035 108.725C111.883 109.621 110.497 110.044 108.943 110.044H93.2776C91.7217 110.044 90.3075 109.621 89.0749 108.758L89.0223 108.722L88.9742 108.679C87.8779 107.704 87.1741 106.511 86.917 105.118L64.9242 0.808838H81.6219L98.5494 85.1329L98.5506 85.1384C98.9697 87.1298 99.3353 89.273 99.6482 91.5671C99.9165 93.4447 100.224 95.4013 100.57 97.4369H102.273C102.634 95.3842 102.995 93.4095 103.357 91.513C103.771 89.3384 104.185 87.2153 104.599 85.1438L104.601 85.1332L121.191 6.21531C121.438 4.65487 122.117 3.33763 123.252 2.32949L123.273 2.31038L123.296 2.29242C124.529 1.30549 125.963 0.808838 127.555 0.808838H142.445C144.037 0.808838 145.443 1.30703 146.593 2.32949C147.714 3.32576 148.442 4.62269 148.798 6.16553L148.8 6.17611L165.394 85.1156C165.395 85.1187 165.396 85.1218 165.396 85.1248C165.917 87.4151 166.334 89.6562 166.648 91.8482C167.002 93.7106 167.281 95.5735 167.485 97.4369H169.402L170.196 91.8808L170.196 91.8774C170.509 89.5831 170.875 87.3902 171.293 85.299L171.293 85.2966L188.379 0.808838H205.075ZM171.293 92.0305L170.363 98.5447H166.485C166.279 96.3733 165.968 94.2019 165.555 92.0305C165.244 89.8591 164.831 87.6359 164.314 85.3611L147.718 6.41464C147.408 5.07043 146.787 3.98472 145.857 3.15751C144.926 2.33031 143.789 1.9167 142.445 1.9167H127.555C126.211 1.9167 125.022 2.33031 123.988 3.15751C123.057 3.98472 122.488 5.07043 122.281 6.41464L105.686 85.3611C105.272 87.4291 104.858 89.5489 104.445 91.7203C104.031 93.8917 103.618 96.1665 103.204 98.5447H99.6367C99.2231 96.1665 98.8612 93.8917 98.551 91.7203C98.2408 89.4454 97.8789 87.3257 97.4653 85.3611L80.7144 1.9167H66.29L88.0041 104.904C88.2109 106.041 88.7796 107.024 89.7102 107.851C90.7442 108.575 91.9334 108.936 93.2776 108.936H108.943C110.287 108.936 111.424 108.575 112.355 107.851C113.389 107.024 114.061 105.99 114.371 104.749L130.967 24.2513C131.381 22.2867 131.743 20.2703 132.053 18.2023C132.466 16.1343 132.88 14.118 133.294 12.1534H136.551C136.964 14.118 137.378 16.1343 137.792 18.2023C138.205 20.1669 138.619 22.1833 139.032 24.2513L155.783 104.749C155.99 105.99 156.559 107.024 157.489 107.851C158.523 108.575 159.713 108.936 161.057 108.936H176.567C178.014 108.936 179.204 108.575 180.134 107.851C181.065 107.024 181.685 106.041 181.995 104.904L203.71 1.9167H189.285L172.379 85.5162C171.966 87.5842 171.604 89.7557 171.293 92.0305ZM241.055 5.63914C241.365 4.50173 241.986 3.62282 242.916 3.00241C243.847 2.27861 244.933 1.9167 246.173 1.9167H260.443C261.683 1.9167 262.769 2.27861 263.7 3.00241C264.63 3.62282 265.251 4.50173 265.561 5.63914L299.993 108.936H285.879L275.284 75.4346H231.332L220.737 108.936H206.623L241.055 5.63914ZM258.116 21.1492C257.703 19.7016 257.237 18.254 256.72 16.8064C256.307 15.2554 255.893 13.8078 255.479 12.4636H251.137C250.723 13.8078 250.309 15.2554 249.896 16.8064C249.482 18.254 249.017 19.7016 248.5 21.1492L235.06 63.647H271.556L258.116 21.1492ZM270.044 62.5391L257.055 21.4685L257.051 21.4536C256.644 20.0294 256.186 18.6046 255.677 17.179L255.662 17.136L255.65 17.0919C255.319 15.8499 254.988 14.6765 254.658 13.5714H251.958C251.628 14.6765 251.297 15.8499 250.966 17.0919L250.964 17.1013L250.961 17.1108C250.543 18.5755 250.072 20.0395 249.55 21.5028L236.572 62.5391H270.044ZM232.143 76.5425L221.548 110.044H205.085L239.995 5.31652C240.371 3.964 241.13 2.87349 242.268 2.10326C243.397 1.23644 244.714 0.808838 246.173 0.808838H260.443C261.902 0.808838 263.219 1.23648 264.348 2.10336C265.487 2.87363 266.246 3.9642 266.621 5.31678L301.531 110.044H285.068L274.473 76.5425H232.143ZM398.516 0.808838V103.508C398.516 105.48 398.037 107.165 396.884 108.351C395.726 109.544 394.071 110.044 392.134 110.044H378.796C377.076 110.044 375.572 109.642 374.393 108.725C373.278 107.858 372.407 106.605 371.737 105.051L335.608 29.2258L335.603 29.2148L335.598 29.2038C334.672 27.146 333.59 24.8279 332.352 22.2491C331.24 19.9322 330.366 17.7628 329.734 15.7429H329.286C329.443 17.6493 329.564 19.5905 329.65 21.5664C329.754 23.9607 329.806 26.3549 329.806 28.7492V110.044H313.941V7.34525C313.941 5.36496 314.437 3.67626 315.623 2.49046C316.809 1.30466 318.497 0.808838 320.478 0.808838H333.351C335.071 0.808838 336.575 1.21112 337.754 2.12792C338.869 2.99542 339.741 4.24856 340.41 5.8038L375.445 79.7486C376.589 81.9345 377.782 84.4238 379.022 87.2144C380.26 89.6905 381.411 92.1674 382.475 94.645H383.23C383.14 92.2499 383.051 89.8933 382.962 87.5751C382.858 84.8725 382.806 82.1699 382.806 79.4673V0.808838H398.516ZM384.338 94.645C384.352 95.0134 384.366 95.3827 384.379 95.7529H381.743C380.605 93.0645 379.364 90.3761 378.02 87.6876C376.779 84.8958 375.59 82.4142 374.453 80.2428L339.4 6.25953C338.78 4.81192 338.004 3.72622 337.074 3.00241C336.143 2.27861 334.902 1.9167 333.351 1.9167H320.478C316.859 1.9167 315.049 3.72622 315.049 7.34525V108.936H328.698V28.7492C328.698 26.371 328.646 23.9928 328.543 21.6146C328.456 19.621 328.333 17.6638 328.174 15.7429C328.143 15.3722 328.111 15.0029 328.078 14.635H330.559C331.18 16.8064 332.11 19.1846 333.351 21.7697C334.592 24.3547 335.678 26.6812 336.608 28.7492L372.747 104.594C373.367 106.041 374.143 107.127 375.073 107.851C376.004 108.575 377.245 108.936 378.796 108.936H392.134C395.65 108.936 397.408 107.127 397.408 103.508V1.9167H383.914V79.4673C383.914 82.1557 383.966 84.8441 384.069 87.5325C384.159 89.8645 384.249 92.2353 384.338 94.645ZM414.636 1.9167V14.0146H449.069V108.936H462.718V14.0146H497.305V1.9167H414.636ZM463.825 15.1225V110.044H447.961V15.1225H413.528V0.808838H498.413V15.1225H463.825ZM15.4665 1.9167H1.81758V108.936H15.4665V1.9167Z" fill="url(#gradient-want)" data-v-7190abc7="">
+                                                    </path>
+                                                    <defs data-v-7190abc7="">
+                                                        <linearGradient id="gradient-want" x1="-117.715" y1="-207.157" x2="565.865" y2="205.138" gradientUnits="userSpaceOnUse" data-v-7190abc7="">
+                                                            <stop stop-color="#FA00FF" data-v-7190abc7="">
+                                                            </stop>
+                                                            <stop offset="1" stop-color="#51AFFF" data-v-7190abc7="">
+                                                            </stop>
+                                                        </linearGradient>
+                                                    </defs>
+                                                </svg>
+                                            </div>
+                                            <div data-v-7190abc7="" style="opacity: 1; transition: transform 1000ms cubic-bezier(0.19, 1, 0.22, 1);" data-csstween="13">
+                                                <span class="front" data-v-7190abc7="">ALL</span>
+                                                <svg class="back back-all" width="254" height="111" viewBox="0 0 254 111" fill="none" xmlns="http://www.w3.org/2000/svg" data-v-7190abc7="">
+                                                    <path fill-rule="evenodd" clip-rule="evenodd" d="M36.3067 5.82371C36.6169 4.6863 37.2373 3.80739 38.1679 3.18699C39.0985 2.46318 40.1842 2.10127 41.425 2.10127H55.6943C56.9351 2.10127 58.0209 2.46318 58.9515 3.18699C59.8821 3.80739 60.5025 4.6863 60.8127 5.82371L95.2451 109.121H81.1309L70.5358 75.6192H26.5835L15.9884 109.121H1.87424L36.3067 5.82371ZM53.3678 21.3338C52.9542 19.8862 52.4889 18.4386 51.9719 16.991C51.5583 15.44 51.1447 13.9924 50.7311 12.6482H46.3883C45.9747 13.9924 45.5611 15.44 45.1475 16.991C44.7339 18.4386 44.2686 19.8862 43.7515 21.3338L30.3115 63.8315H66.8079L53.3678 21.3338ZM65.2956 62.7237L52.3068 21.6531L52.3026 21.6382C51.8957 20.214 51.4377 18.7892 50.9286 17.3636L50.9132 17.3206L50.9014 17.2764C50.5703 16.0345 50.2395 14.8611 49.9093 13.756H47.21C46.8798 14.8611 46.5491 16.0345 46.2179 17.2764L46.2154 17.2859L46.2127 17.2953C45.7942 18.76 45.3239 20.224 44.8017 21.6872L31.8238 62.7237H65.2956ZM27.3951 76.7271L16.8 110.229H0.337158L35.2464 5.50129C35.6222 4.1487 36.3812 3.05812 37.5196 2.28785C38.6483 1.42102 39.9655 0.993408 41.425 0.993408H55.6943C57.1539 0.993408 58.4711 1.42104 59.5998 2.28789C60.7382 3.05813 61.4972 4.14867 61.873 5.50121L96.7822 110.229H80.3193L69.7242 76.7271H27.3951ZM124.592 0.993408V87.4069C124.592 90.7648 125.383 93.0033 126.738 94.3667C128.213 95.748 130.524 96.5357 133.876 96.5357H173.541L174.287 109.212L173.202 109.295C166.457 109.814 159.558 110.125 152.505 110.229C145.572 110.332 138.638 110.384 131.705 110.384C123.702 110.384 117.729 108.439 114.116 104.262C110.608 100.206 108.883 95.1287 108.883 89.113V0.993408H124.592ZM152.488 109.121C159.52 109.018 166.396 108.707 173.117 108.19L172.496 97.6436H133.876C130.361 97.6436 127.724 96.8164 125.966 95.162C124.312 93.5075 123.484 90.9225 123.484 87.4069V2.10127H109.991V89.113C109.991 94.9035 111.645 99.7116 114.954 103.537C118.263 107.363 123.846 109.276 131.705 109.276C138.633 109.276 145.561 109.224 152.488 109.121ZM204.263 0.993408V87.4069C204.263 90.7649 205.054 93.0034 206.409 94.3668C207.885 95.748 210.196 96.5357 213.547 96.5357H253.212L253.958 109.212L252.873 109.295C246.128 109.814 239.229 110.125 232.176 110.229C225.243 110.332 218.309 110.384 211.376 110.384C203.373 110.384 197.4 108.439 193.787 104.262C190.279 100.206 188.554 95.1287 188.554 89.113V0.993408H204.263ZM232.159 109.121C239.191 109.018 246.067 108.707 252.788 108.19L252.167 97.6436H213.547C210.032 97.6436 207.395 96.8164 205.637 95.162C203.983 93.5075 203.156 90.9225 203.156 87.4069V2.10127H189.662V89.113C189.662 94.9035 191.316 99.7116 194.625 103.537C197.934 107.363 203.517 109.276 211.376 109.276C218.304 109.276 225.232 109.224 232.159 109.121Z" fill="url(#gradient-all)" data-v-7190abc7="">
+                                                    </path>
+                                                    <defs data-v-7190abc7="">
+                                                        <linearGradient id="gradient-all" x1="-52.5929" y1="-206.972" x2="373.981" y2="-78.581" gradientUnits="userSpaceOnUse" data-v-7190abc7="">
+                                                            <stop stop-color="#FA00FF" data-v-7190abc7="">
+                                                            </stop>
+                                                            <stop offset="1" stop-color="#51AFFF" data-v-7190abc7="">
+                                                            </stop>
+                                                        </linearGradient>
+                                                    </defs>
+                                                </svg>
+                                            </div>
+                                        </div>
+                                        <div class="text in" data-v-7190abc7="" style="opacity: 1; transition: transform 1000ms cubic-bezier(0.19, 1, 0.22, 1);" data-csstween="14">
+                                            <div data-v-7190abc7="">
+                                                <svg class="icon icon-IT_Text front front" viewBox="0 0 64 43" data-v-7190abc7="">
+                                                    <use href="#IT_Text">
+                                                    </use>
+                                                </svg>
+                                                <svg class="back back-it" width="73" height="49" viewBox="0 0 73 49" fill="none" xmlns="http://www.w3.org/2000/svg" data-v-7190abc7="">
+                                                    <g data-v-7190abc7="">
+                                                        <path fill-rule="evenodd" clip-rule="evenodd" d="M20.1548 8.34595V41.216H7.90796V8.34595H20.1548ZM9.06332 9.50131V40.0606H18.9994V9.50131H9.06332ZM41.6982 18.1665V40.0606H51.6921V18.1665H63.9389V9.50131H29.4514V18.1665H41.6982ZM28.296 8.34595H65.0942V19.3219H52.8474V41.216H40.5428V19.3219H28.296V8.34595Z" fill="url(#gradient-it)" data-v-7190abc7="">
+                                                        </path>
+                                                    </g>
+                                                    <defs data-v-7190abc7="">
+                                                        <linearGradient id="gradient-it" x1="4.50606" y1="41.2812" x2="68.4386" y2="39.0257" gradientUnits="userSpaceOnUse" data-v-7190abc7="">
+                                                            <stop stop-color="color(magenta-gradient-5)" data-v-7190abc7="">
+                                                            </stop>
+                                                            <stop offset="0.317708" stop-color="#B762FF" data-v-7190abc7="">
+                                                            </stop>
+                                                            <stop offset="0.557292" stop-color="#5143FF" data-v-7190abc7="">
+                                                            </stop>
+                                                            <stop offset="0.770833" stop-color="#005CFF" data-v-7190abc7="">
+                                                            </stop>
+                                                            <stop offset="1" stop-color="#8FD7FF" data-v-7190abc7="">
+                                                            </stop>
+                                                        </linearGradient>
+                                                    </defs>
+                                                </svg>
+                                            </div>
+                                            <svg class="icon icon-title-rect rect rect" viewBox="0 0 399 103.7" data-v-7190abc7="">
+                                                <use href="#title-rect">
+                                                </use>
+                                            </svg>
+                                        </div>
+                                    </div>
+                                    <svg class="icon icon-title-circle circle circle" viewBox="0 0 292 335" data-v-7190abc7="" style="opacity: 1; transition: opacity 600ms cubic-bezier(0.19, 1, 0.22, 1);" data-csstween="10">
+                                        <use href="#title-circle">
+                                        </use>
+                                    </svg>
+                                </div>
+                            </div>
+                            <p data-v-0fdf75bd="" data-csstween="2" style="opacity: 1; transition: opacity 300ms cubic-bezier(0.55, 0.055, 0.675, 0.19) 800ms;">暢玩贏得 <strong>MAG Infinite S3 12th</strong>、<strong>MAG Codex X5 12th</strong> 或 <strong>MEG Trident X 12th &amp; Optix-MAG274QRF-QD</strong> 好禮！ 本活動於&nbsp;2022/8/21&nbsp;截止。</p>
+                            <div class="cta-wrapper" data-v-0fdf75bd="" style="opacity: 0; animation: 1000ms ease-in-out 1050ms 1 normal forwards running blinkOpacityIn;" data-csstween="4">
+                                <div class="glow" data-v-0fdf75bd="" data-csstween="3" style="opacity: 0; transition: opacity 750ms cubic-bezier(0.215, 0.61, 0.355, 1) 1050ms;">
+                                </div>
+                                <div class="interactive-cta interactive-cta--base" data-v-4598a68e="" data-v-0fdf75bd="">
+                                    <button class="interactive-cta__content" data-v-4598a68e="" style="transform: translate(0px, 0px);">
+                                        <div class="blink-text" data-v-4598a68e="">
+                                            <p class="content">
+                                                <span class="word">
+                                                    <span class="char char-0 visible">立</span>
+                                                    <span class="char char-1">即</span>
+                                                    <span class="char char-2">參</span>
+                                                    <span class="char char-3 visible">加</span>
+                                                </span>
+                                            </p>
+                                        </div>
+                                    </button>
+                                    <div class="glow" data-v-4598a68e="" style="transform: translate(0px, 0px) scale(0.97); opacity: 0.3;">
+                                    </div>
+                                    <div class="border border-1" data-v-4598a68e="" style="transform: translate(0px, 0px) scale(0.872344); opacity: 0;">
+                                    </div>
+                                    <div class="border border-2" data-v-4598a68e="" style="transform: translate(0px, 0px) scale(0.872344); opacity: 0;">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="right" data-v-0fdf75bd="">
+                            <button class="prizes-badge" data-v-22fc0d63="" data-v-0fdf75bd="" style="pointer-events: none;">
+                                <div class="prizes" data-v-22fc0d63="">
+                                    <div class="wrapper" data-v-22fc0d63="" style="opacity: 1;">
+                                        <div class="picture el-1" data-v-22fc0d63="" data-csstween="7" style="transition: transform 900ms cubic-bezier(0.55, 0, 0.1, 1) 1100ms;">
+                                            <div class="picture-prizes" data-v-22fc0d63="">
+                                                <figure class="lazy-img obj-fit-contain loaded" data-v-22fc0d63="" style="--padding-top: 56.25%;">
+                                                    <img draggable="false" decoding="async" src="./assets/prizes.72cc86d011ae33ec.avif" alt="Image">
+                                                </figure>
+                                            </div>
+                                        </div>
+                                        <p class="el-2" data-v-22fc0d63="" data-csstween="8" style="transition: transform 900ms cubic-bezier(0.55, 0, 0.1, 1) 1110ms;">獎勵 &amp; 電競電腦</p>
+                                        <div class="cta el-3" data-v-22fc0d63="" data-csstween="9" style="transition: transform 900ms cubic-bezier(0.55, 0, 0.1, 1) 1120ms;">
+                                            <div class="arrow" data-v-22fc0d63="">
+                                                <span data-v-22fc0d63="">
+                                                </span>
+                                                <span data-v-22fc0d63="">
+                                                </span>
+                                            </div>
+                                            <div class="arrow" data-v-22fc0d63="">
+                                                <span data-v-22fc0d63="">
+                                                </span>
+                                                <span data-v-22fc0d63="">
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="backgrounds" data-v-22fc0d63="" style="opacity: 1;">
+                                        <div class="circle circle-1" data-v-22fc0d63="" data-csstween="5" style="transition: transform 950ms cubic-bezier(0.55, 0, 0.1, 1) 1050ms;">
+                                        </div>
+                                        <div class="circle circle-2" data-v-22fc0d63="" data-csstween="6" style="transition: transform 950ms cubic-bezier(0.55, 0, 0.1, 1) 1055ms;">
+                                        </div>
+                                    </div>
+                                </div>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="bg" data-v-0fdf75bd="" data-csstween="1" style="opacity: 0;">
+                    </div>
+                </section>
+            </main>
+            <aside class="webgl-wrapper">
+                <canvas class="webgl-canvas" data-engine="three.js r142" width="1280" height="900" style="width: 1280px; height: 900px;">
+                </canvas>
+            </aside>
+            <!---->
+        </div>
+        <script>window.__DATA=JSON.parse('{"project":{"timestamp":"20220930-130257","environment":"archive","url":"https://iwantitall.merci-michel.com/","origin":"https://iwantitall.merci-michel.com","basepath":"/","locales":{"en":{"name":"English","code":"en_us","default":true,"id":"en","language":"en","region":"US"},"fr":{"name":"Français","code":"fr_fr","id":"fr","language":"fr","region":"FR"},"de":{"name":"Deutsch","code":"de_de","id":"de","language":"de","region":"DE"},"es":{"name":"Español","code":"es_es","id":"es","language":"es","region":"ES"},"it":{"name":"Italiano","code":"it_it","id":"it","language":"it","region":"IT"},"nl":{"name":"Nederlands","code":"nl_nl","id":"nl","language":"nl","region":"NL"},"ja":{"name":"日本語","code":"ja_jp","systemFonts":true,"id":"ja","language":"ja","region":"JP"},"zh-tw":{"name":"繁體中文","code":"zh_tw","language":"zh-tw","systemFonts":true,"id":"zh-tw","region":"TW"}}},"site":{"locale":"zh-tw","bonus":{"scale":{"name":"輕鬆升級","desc":"<strong>短板加長</strong><br>擁有可簡單升級的電競桌機，讓您始終能暢玩最新遊戲！"},"simultaneity":{"name":"同時進行","desc":"<strong>球數加倍</strong><br>同時儲存所有您喜愛的遊戲。使用電競 PC 聽音樂、玩遊戲，看電影！"},"power":{"name":"強大效能","desc":"<strong>太空雷射光束</strong><br>無與倫比的 PC 性能帶來極致的遊戲體驗。"},"future-shield":{"name":"未來之盾","desc":"<strong>全面防護</strong><br>享受強大的保修和故障排除，無後顧之憂。"},"battle-ready":{"name":"戰鬥就緒","desc":"<strong>火球攻擊</strong><br>擁有桌機或 Console，帶你輕鬆跳入遊戲世界！"},"personalization":{"name":"個性化","desc":"<strong>炫彩霓虹</strong><br>RGB 開啟！ 盡情打造你專屬的獨特遊戲空間。"}},"cookies":{"button":{"accept":"接受","discard":"放棄"},"description":"使用 cookie 來優化網站功能並提供最佳體驗。 查看我們的<a target=\\"_blank\\" rel=\\"noreferrer noopener nofollow\\" href=\\"https://tw.msi.com/page/privacy-policy\\">隱私政策</a>。"},"menu":{"cookies":{"label":"Cookies","link":"https://account.msi.com/terms/cookie_policy"},"legals":{"label":"使用條款","link":"https://account.msi.com/terms/services_terms_of_use"},"msi":{"label":"tw.msi.com","link":"https://tw.msi.com/Landing/i-want-it-all-gaming-desktop-pc-console"},"play":"立即參加","prizes":"獎勵 & 電競電腦","rules":{"label":"規則","link":"https://download.msi.com/archive/mnu_exe/pdf/2022/Want-It-All-Terms-and-Conditions.pdf"},"desktop":{"label":"最佳桌上型電競桌機","link":"https://tw.msi.com/Landing/best-gaming-desktop-pc"}},"home":{"cta":"立即參加","prizes":{"cta":"獎勵 &amp; 電競電腦"},"text":"暢玩贏得 <strong>MAG Infinite S3 12th</strong>、<strong>MAG Codex X5 12th</strong> 或 <strong>MEG Trident X 12th &amp; Optix-MAG274QRF-QD</strong> 好禮！","end":"本活動於 2022/8/21 截止。"},"introduction":{"cta":"開始遊戲","title":"6 個 bonus<br>提升你的遊戲"},"end":{"cta":{"register":"註冊就有機會贏取","retry":"再試一次"},"register":{"confirmation":{"cta":"再試一次以提高您的分數","retry":{"description":"您沒有獲得新的高分，請再試一次！","title":"太可惜了，再試一次"},"saved":{"description":"做的很棒，但你認為你可以做得更好嗎？","title":"您的資料已保存"},"updated":{"description":"恭喜，你提高了分數！","title":"您的分數已更新"}},"email":{"cta":"驗證","placeholder":"輸入您的e-mail信箱","text":"輸入您的電子郵件以保存您的最佳表現並參加比賽","title":"參加比賽"},"form":{"country":{"placeholder":"地區"},"cta":"登記","firstname":{"placeholder":"名"},"lastname":{"placeholder":"姓"},"newsletter":"**訂閱 MSI **。 如果您想收到我們的最新消息和更新，請選擇此框。 單擊此處，即表示您同意 [Micro-Star International Co., LTD.] 處理您的個人數據，以向您發送有關 [MSI 的產品、服務和即將舉行的活動] 的訊息。 請注意，您可以隨時在<a target=\\"_blank\\" rel=\\"noreferrer noopener nofollow\\" href=\\"https://account.msi.com/unsubscribe\\">此處</a>取消訂閱 MSI 。","terms":"我完全理解條款和條件的內容並同意。","title":"登記"}},"score":{"title":"最終成績"},"confirmation":{"cta":"查看 MSI 桌機系列活動","ctalink":"https://tw.msi.com/Landing/i-want-it-all-gaming-desktop-pc-console"},"recaptcha":"本網站受 reCAPTCHA 保護，適用 Google、隱私政策和服務條款。"},"oldbrowser":{"description":"您使用的是較舊的設備或瀏覽器版本。 請使用其他瀏覽器或設備造訪此內容。","title":"抱歉"},"meta":{"description":"暢玩贏得 MAG Infinite S3 12th、MAG Codex X5 12th 或 MEG Trident X 12th & Optix-MAG274QRF-QD 好禮！","title":"MSI - I want it all"},"page":{"title":"全都想要嗎？！","description":"您達到的分數越高，獎金越高！<br>在等級列表下方尋找。 <strong>你~準備好了嗎？</strong>","game":{"cta":"立即暢玩"},"series":{"title":"探索<br><strong>微星電競系列</strong>","cta":"規格"}},"game":{"end":"活動結束","lifes":"生命","tutorial":"點擊並按住<br>移動"},"products":{"aegis":{"name":"Aegis","features":"對於那些想要終極遊戲性能的玩家來說，是一台最引人注目的桌機","link":"https://tw.msi.com/Desktops/Products#?tag=Aegis-%E7%B3%BB%E5%88%97"},"trident":{"name":"Trident","features":"效能強大的輕薄電競桌機","link":"https://tw.msi.com/Desktops/Products#?tag=Trident-%E7%B3%BB%E5%88%97"},"infinite":{"name":"Infinite","features":"深受各類遊戲玩家喜愛的主流品牌桌機。","link":"https://tw.msi.com/Desktops/Products#?tag=Infinite-%E7%B3%BB%E5%88%97"},"meta":{"name":"Meta","features":"具有AMD Ryzen處理器和 AMD技術的強大功能","link":"https://tw.msi.com/Desktops/Products#?tag=Meta-%E7%B3%BB%E5%88%97"},"codex":{"name":"Codex","features":"具有優化的散熱氣流路徑，提供穩定的遊戲體驗","link":"https://tw.msi.com/Desktops/Products#?tag=Codex-%E7%B3%BB%E5%88%97"}},"aria":{"label":{"close":"關閉","menu":"選單","prizes":{"go":"獎項內容"},"sound":"聲音"}},"prizes":{"prize":[{"points":"0","tier":"等級一","name":"Infinite S3 12th 電競桌機"},{"points":"350","tier":"等級二","name":"Codex X5 12th 電競桌機"},{"points":"1200","tier":"等級三","name":"Trident X 12th 電競桌機 + Optix-MAG274QRF-QD 電競螢幕"}],"unit":"pts"}},"page":{"route":{"name":"Home","url":"https://iwantitall.merci-michel.com/zh-tw","params":{}},"translations":{"en":"/","fr":"/fr","de":"/de","es":"/es","it":"/it","nl":"/nl","ja":"/ja","zh-tw":"/zh-tw"},"locale":"zh-tw"}}')</script>
+        <!-- 历史记录弹窗（奖杯按钮触发） -->
+        <div class="dzk-records-modal" id="dzk-records-modal">
+            <div class="dzk-records-card">
+                <button class="dzk-close" id="dzk-records-close" aria-label="關閉">×</button>
+                <h2>🏆 历史记录</h2>
+                <div class="dzk-best-num" id="dzk-records-best">0</div>
+                <div class="dzk-best-time" id="dzk-records-best-time"></div>
+                <div class="dzk-sub">本机保存 · 破纪录自动更新</div>
+                <div class="dzk-records-list" id="dzk-records-list"></div>
+            </div>
+        </div>
+        <!-- 本地记录浮标：原游戏把记录发往已下线的 MSI 后端，这里改为本地保存并显示最高分 -->
+        <script src="./assets/records_v28.js" defer="defer"></script>
+        <script type="module" src="./assets/main.fb1695dd11ae33ec_v10.js" defer="defer">
+        </script>
+    </body>
+</html>

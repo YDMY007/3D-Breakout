@@ -1,0 +1,23 @@
+appname               = breakout3d
+version               = 1.2.15
+display_name          = 打砖块3D版
+desc                  = """
+<div style="margin-bottom:10px;padding:10px 14px;border-radius:10px;background:rgba(81,67,255,.12);border:1px solid rgba(81,67,255,.35);font-size:13px;line-height:1.7">🛡️ <b>隐私声明</b>：本应用唯一联网收集的数据是无尽模式的排行榜成绩（昵称、到达层数、破坏砖块数、提交时间），仅用于全球排行榜的展示与排序；不收集邮箱、手机号等任何身份信息；普通关卡的游玩数据与设置仅保存在你的浏览器本地，永不上传。</div>
+<div>经典街机《打砖块》的 3D 重制版！《打砖块》(Breakout) 最初由雅达利于 1976 年推出，
+是第一款打砖块游戏，也是游戏史上最具代表性的作品之一。本作以现代 WebGL 技术重新演绎：
+真实的 3D 画面、物理引擎驱动的碰撞效果，带你重温经典。</div>
+<div>🎮 多种精心设计的关卡，从经典布局到高难度挑战，任你闯关</div>
+<div>🏆 无尽模式接入全球排行榜，和全网玩家比拼谁能打到更深的层数</div>
+<div>🚀 纯前端实现，点开即玩，无需任何配置</div>
+<div>准备好弹球与挡板，尽情享受打碎一切的快感吧！</div>
+<div style="margin-top:8px;color:#888;font-size:12px;">原版游戏由 Merci-Michel 为 MSI 开发，本项目在其基础上适配飞牛 NAS。</div>"""
+arch                  = all
+source                = thirdparty
+maintainer            = YDMY007
+maintainer_url        = https://github.com/YDMY007/Fntv-Plus
+distributor           = 彩奈
+distributor_url       =
+desktop_uidir         = ui
+desktop_applaunchname = breakout3d.Application
+platform              =
+checksum              = {{CHECKSUM}}

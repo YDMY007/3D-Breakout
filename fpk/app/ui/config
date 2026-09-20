@@ -1,0 +1,12 @@
+{
+    ".url": {
+        "breakout3d.Application": {
+            "title": "打砖块3D版",
+            "icon": "images/icon_{0}.png",
+            "type": "iframe",
+            "protocol": "",
+            "url": "/cgi/ThirdParty/breakout3d/index.cgi/",
+            "allUsers": true
+        }
+    }
+}

@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+    <head>
+        <meta charset="utf-8">
+        <base href="./">
+        <meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no,viewport-fit=cover">
+        <title>3D-Breakout By 彩奈</title>
+        <link rel="icon" href="./favicon.ico" sizes="any">
+        <link rel="icon" href="./icons/favicon_dark.svg" type="image/svg+xml" media="(prefers-color-scheme: dark)">
+        <link rel="icon" href="./icons/favicon_light.svg" type="image/svg+xml" media="(prefers-color-scheme: light)">
+        <style>
+            *{margin:0;padding:0;box-sizing:border-box}
+            html,body{height:100%}
+            body{
+                display:flex;align-items:center;justify-content:center;
+                font-family:"Exo2","Segoe UI",Arial,Helvetica,sans-serif;
+                color:#fff;background:#000;overflow:hidden;
+                -webkit-user-select:none;user-select:none;
+            }
+            body:before{
+                content:"";position:fixed;inset:0;pointer-events:none;
+                background:
+                    radial-gradient(60vw 40vh at 15% 10%,rgba(81,67,255,.28),transparent 70%),
+                    radial-gradient(50vw 40vh at 85% 85%,rgba(250,0,255,.22),transparent 70%),
+                    radial-gradient(40vw 30vh at 80% 15%,rgba(143,215,255,.12),transparent 70%);
+            }
+            .card{
+                position:relative;z-index:1;
+                width:min(480px,92vw);
+                padding:44px 40px 30px;text-align:center;
+                background:linear-gradient(160deg,rgba(45,22,72,.92),rgba(18,12,38,.94));
+                border:1px solid rgba(250,0,255,.45);border-radius:22px;
+                box-shadow:0 14px 60px rgba(81,67,255,.4),0 0 0 1px rgba(250,0,255,.1) inset;
+            }
+            .card:before{
+                content:"";position:absolute;top:-1px;left:28px;right:28px;height:2px;
+                background:linear-gradient(90deg,transparent,#fa00ff,#00dcff,transparent);
+                opacity:.9;pointer-events:none;
+            }
+            .logo{width:84px;height:84px;margin:0 auto 18px;padding:16px;border-radius:20px;background:rgba(0,0,0,.35);border:1px solid rgba(255,255,255,.12)}
+            .logo img{width:100%;height:100%;display:block}
+            h1{
+                font-size:26px;font-weight:800;letter-spacing:.08em;
+                background:linear-gradient(135deg,#FA8FFF,#8FD8FF);
+                -webkit-background-clip:text;background-clip:text;color:transparent;
+            }
+            .tip{margin:14px 0 26px;font-size:13px;line-height:1.8;color:rgba(255,255,255,.72)}
+            .tip b{color:#8FD8FF;font-weight:700}
+            .btn{
+                display:block;width:100%;padding:14px 0;margin-bottom:12px;
+                border:none;border-radius:12px;cursor:pointer;
+                font-family:inherit;font-size:15px;font-weight:800;letter-spacing:.06em;color:#fff;
+            }
+            .btn-primary{
+                background:linear-gradient(135deg,#5143FF,#FA00FF);
+                box-shadow:0 4px 20px rgba(250,0,255,.45);
+                transition:transform .15s,box-shadow .15s;
+            }
+            .btn-primary:hover{transform:translateY(-2px);box-shadow:0 8px 26px rgba(250,0,255,.65)}
+            .btn-primary:active{transform:translateY(0)}
+            .btn-ghost{
+                background:transparent;border:1px solid rgba(255,255,255,.22);
+                color:rgba(255,255,255,.75);font-weight:600;font-size:13px;
+                transition:border-color .15s,color .15s;
+            }
+            .btn-ghost:hover{border-color:rgba(143,216,255,.7);color:#8FD8FF}
+            .meta{margin-top:22px;padding-top:14px;border-top:1px solid rgba(255,255,255,.1);font-size:11px;color:rgba(255,255,255,.45)}
+            .meta a{color:rgba(143,216,255,.8);text-decoration:none}
+            .meta a:hover{color:#8FD8FF;text-decoration:underline}
+        </style>
+    </head>
+    <body>
+        <div class="card">
+            <div class="logo"><img src="./icons/favicon_dark.svg" alt="打砖块 3D 版"></div>
+            <h1>打砖块 3D 版</h1>
+            <p class="tip">
+                检测到游戏正运行在<b>飞牛桌面小窗</b>中。<br>
+                小窗会拖慢 WebGL 渲染，推荐在新标签页中全屏畅玩。
+            </p>
+            <button class="btn btn-primary" id="dzk-open-tab">在新标签页中打开（推荐）</button>
+            <button class="btn btn-ghost" id="dzk-run-here">仍在小窗中运行（性能受限）</button>
+            <p class="meta">开发者 <a href="https://github.com/YDMY007/Fntv-Plus" target="_blank" rel="noopener noreferrer">YDMY007</a> · 发布者 彩奈</p>
+        </div>
+        <script>
+            (function () {
+                var base = location.href.replace(/launcher\.html[\s\S]*$/, "");
+                var input = document.createElement("input");
+                input.readOnly = true;
+                input.value = base;
+                input.style.cssText = "display:none;width:100%;margin-top:10px;padding:8px 10px;border-radius:8px;border:1px solid rgba(255,255,255,.25);background:rgba(0,0,0,.45);color:#8FD8FF;font-size:12px";
+                document.querySelector(".card").appendChild(input);
+                document.getElementById("dzk-open-tab").addEventListener("click", function () {
+                    var w = null;
+                    try { w = window.open(base, "_blank"); } catch (e) {}
+                    if (!w) {
+                        // 沙箱/弹窗拦截兜底：展示地址让用户手动复制到新窗口
+                        input.style.display = "block";
+                        input.value = base;
+                        input.focus();
+                        input.select();
+                    }
+                });
+                document.getElementById("dzk-run-here").addEventListener("click", function () {
+                    try { sessionStorage.setItem("dzk-inwindow", "1"); } catch (e) {}
+                    location.replace(base);
+                });
+            })();
+        </script>
+    </body>
+</html>
