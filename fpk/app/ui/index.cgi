@@ -31,17 +31,47 @@ fi
 HEX_PATH=$(echo "$REL_PATH" | sed 's/%/\\x/g')
 REL_PATH=$(printf '%b' "$HEX_PATH")
 
-# 拼出真实文件路径：basePath + index.cgi 后面的路径
-TARGET_FILE="${BASE_PATH}${REL_PATH}"
+# ===== 路径安全校验（防路径穿越）=====
+# 拒绝可疑字符：反斜杠、控制字符、空字节；拒绝任何 ".." 段（含解码后的变体）
+case "$REL_PATH" in
+    *'..'*|*'\'*|*$'\t'*|*$'\r'*|*$'\n'*)
+        echo "Status: 400 Bad Request"
+        echo "Content-Type: text/plain; charset=utf-8"
+        echo ""
+        echo "Bad Request"
+        exit 0
+        ;;
+esac
 
-# 简单防御：禁止 .. 越级访问
-if echo "$TARGET_FILE" | grep -q '\.\.'; then
-    echo "Status: 400 Bad Request"
-    echo "Content-Type: text/plain; charset=utf-8"
-    echo ""
-    echo "Bad Request"
-    exit 0
-fi
+# 规范化后必须仍位于 BASE_PATH 之内（realpath 解析符号链接与 . / .. 后再比对前缀）
+CANON_BASE=$(readlink -f "$BASE_PATH" 2>/dev/null)
+TARGET_FILE="${BASE_PATH}${REL_PATH}"
+CANON_TARGET=$(readlink -m "$TARGET_FILE" 2>/dev/null)
+case "$CANON_TARGET" in
+    "$CANON_BASE"/*) ;;   # 合法：位于应用静态目录内
+    *)
+        echo "Status: 403 Forbidden"
+        echo "Content-Type: text/plain; charset=utf-8"
+        echo ""
+        echo "Forbidden"
+        exit 0
+        ;;
+esac
+TARGET_FILE="$CANON_TARGET"
+
+# 仅允许白名单静态资源类型，避免误暴露其他文件
+ext="${TARGET_FILE##*.}"
+case "$ext" in
+    html|htm|css|js|jpg|jpeg|png|gif|svg|webp|avif|ico|woff|woff2|ttf|\
+    m4a|mp3|ogg|json|txt|log|dat|webmanifest|map|xml) ;;
+    *)
+        echo "Status: 403 Forbidden"
+        echo "Content-Type: text/plain; charset=utf-8"
+        echo ""
+        echo "Forbidden"
+        exit 0
+        ;;
+esac
 
 # 2. 判断文件是否存在
 if [ ! -f "$TARGET_FILE" ]; then

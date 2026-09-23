@@ -1,5 +1,5 @@
 appname               = breakout3d
-version               = 1.2.15
+version               = 1.2.16
 display_name          = 打砖块3D版
 desc                  = """
 <div style="margin-bottom:10px;padding:10px 14px;border-radius:10px;background:rgba(81,67,255,.12);border:1px solid rgba(81,67,255,.35);font-size:13px;line-height:1.7">🛡️ <b>隐私声明</b>：本应用唯一联网收集的数据是无尽模式的排行榜成绩（昵称、到达层数、破坏砖块数、提交时间），仅用于全球排行榜的展示与排序；不收集邮箱、手机号等任何身份信息；普通关卡的游玩数据与设置仅保存在你的浏览器本地，永不上传。</div>
